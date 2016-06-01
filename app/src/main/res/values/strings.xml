@@ -13,8 +13,13 @@
     <string name="terms">Terms And Conditions</string>
 
     <string name="addInfo">Add Contact Info</string>
+    <string name="confirmOrder">Confirmation of Order</string>
 
-
+    <!--Validation fields-->
+    <string name="emailAddressErrorMessageEmpty">Please enter your first Name</string>
+    <string name="emailAddressInvalidMessage">Please enter a valid Email Address</string>
+    <string name="phoneInvalidMessage">Please enter a phone number</string>
+    <string name="passwordErrorMessageEmpty">Please enter your Last Name</string>
 
     <!--Internet Alert Messages-->
     <string name="noInternet">No Internet is available</string>
@@ -69,5 +74,9 @@
     <string name="logout">Log Out</string>
     <string name="ViewDetails">"View Details"</string>
     <string name="TrimVideo">"TrimVideo"</string>
+
+    <string name="saveContactDetails">"SAVE CONTACT DETAILS"</string>
+    <string name="saveData">Your data has been saved </string>
+    <string name="continueNext">Continue</string>
 
 </resources>

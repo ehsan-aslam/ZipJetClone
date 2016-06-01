@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import putitout.zipjetclone.R;
 import putitout.zipjetclone.ui.fragment.BaseFragment;
+import putitout.zipjetclone.ui.fragment.confirmation.ConfirmationFragment;
 import putitout.zipjetclone.ui.fragment.contactinfo.AddContactInfoFragment;
 import putitout.zipjetclone.ui.fragment.menu.HelpFragment;
 import putitout.zipjetclone.ui.fragment.menu.OrderFragment;
@@ -245,9 +246,12 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener,O
                         headerTextView.setText(R.string.privacy);
                     } else if (fragmentName.equals(AddContactInfoFragment.TAG)){
                         headerTextView.setText(R.string.addInfo);
+                    } else if (fragmentName.equals(ConfirmationFragment.TAG)){
+                        headerTextView.setText(R.string.confirmOrder);
                     }
                     else {}
-                    if(fragmentName.equals(AddContactInfoFragment.TAG)){
+                    if(fragmentName.equals(AddContactInfoFragment.TAG) ||
+                            (fragmentName.equals(ConfirmationFragment.TAG))){
                         backImageView.setVisibility(View.VISIBLE);
                         menuImageView.setVisibility(View.INVISIBLE);
                     }else {

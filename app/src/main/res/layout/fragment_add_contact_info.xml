@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <View
@@ -46,6 +47,7 @@
             android:layout_height="match_parent"
             android:layout_weight="46"
             android:hint="First Name"
+
             android:textColorHint="@color/darkGrey"
             android:textSize="@dimen/_65px"
             android:singleLine="true"
@@ -326,13 +328,26 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="17"
+        android:layout_weight="10"
         android:visibility="visible"/>
 
-    <ImageView
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/saveContactImageView"
-        android:src="@drawable/save_contact_details"
-        android:layout_gravity="center_vertical" />
+        android:layout_height="0dp"
+        android:layout_weight="7">
+
+        <Button
+            android:id="@+id/saveContactButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/save_contact_details"
+            android:text="@string/saveContactDetails"
+            android:textSize="@dimen/_60px"
+            android:textStyle="bold"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+
+
 </LinearLayout>
