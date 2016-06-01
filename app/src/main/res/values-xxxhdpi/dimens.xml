@@ -1,0 +1,33 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="nav_header_vertical_spacing">16dp</dimen>
+    <dimen name="nav_header_height">160dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="_120px">120px</dimen>
+    <dimen name="_80_84px">80.84px</dimen>
+    <dimen name="_45_83px">45.83px</dimen>
+    <dimen name="_50px">50px</dimen>
+    <dimen name="_88px">88px</dimen>
+    <dimen name="_40px">40px</dimen>
+    <dimen name="_44px">44px</dimen>
+    <dimen name="_56px">56px</dimen>
+    <dimen name="_55px">55px</dimen>
+    <dimen name="_48px">48px</dimen>
+    <dimen name="_60px">60px</dimen>
+    <dimen name="_61px">60px</dimen>
+    <dimen name="_65px">65px</dimen>
+    <dimen name="_66px">66px</dimen>
+    <dimen name="_30px">30px</dimen>
+    <dimen name="_36px">36px</dimen>
+    <dimen name="_35px">35px</dimen>
+    <dimen name="_110px">110px</dimen>
+    <dimen name="_72px">72px</dimen>
+    <dimen name="_75px">75px</dimen>
+    <dimen name="_76px">76px</dimen>
+    <dimen name="_80px">80.84px</dimen>
+    <dimen name="_98px">98px</dimen>
+    <dimen name="_95px">95px</dimen>
+</resources>

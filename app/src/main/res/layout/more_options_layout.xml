@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    >
+
+    <!--<LinearLayout-->
+        <!--android:id="@+id/menuPokeLinearLayout"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:paddingBottom="5dp"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:paddingTop="5dp">-->
+        <!--<Button-->
+            <!--android:id="@+id/menuEditButton"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="45.5"-->
+            <!--android:text="@string/menuEdit"-->
+            <!--android:background="@null"-->
+            <!--android:textColor="@color/sky_blue"-->
+            <!--android:textSize="@dimen/_72px"-->
+            <!--android:textStyle="bold|italic"-->
+            <!--android:gravity="center"/>-->
+
+    <!--</LinearLayout>-->
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="22dp"
+        android:background="@color/white"/>
+
+    <LinearLayout
+        android:id="@+id/menuLahoreLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:background="@color/white"
+        android:paddingTop="5dp">
+
+        <Button
+            android:id="@+id/lahoreButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="45.5"
+            android:text="@string/lahore"
+            android:textColor="@color/greenColor"
+            android:textSize="@dimen/_72px"
+            android:gravity="center"
+            android:textStyle="bold|italic"
+            android:background="@null" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="21dp"
+        android:background="@color/white"/>
+
+    <LinearLayout
+        android:id="@+id/menuBhlLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp">
+
+        <Button
+            android:id="@+id/bhlButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="45.5"
+            android:text="@string/bahalwapur"
+            android:background="@null"
+            android:textStyle="bold|italic"
+            android:textColor="@color/greenColor"
+            android:textSize="@dimen/_72px"
+            android:gravity="center"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="21dp"
+        android:background="@color/white"/>
+
+    <LinearLayout
+        android:id="@+id/menuChistianLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp">
+
+        <Button
+            android:id="@+id/chisButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="45.5"
+            android:text="@string/chishtian"
+            android:background="@null"
+            android:textStyle="bold|italic"
+            android:textColor="@color/greenColor"
+            android:textSize="@dimen/_72px"
+            android:gravity="center"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="21dp"
+        android:background="@color/white"/>
+
+</LinearLayout>

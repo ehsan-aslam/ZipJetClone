@@ -1,0 +1,73 @@
+<resources>
+    <string name="app_name">ZipJetClone</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="newOrder">New Order</string>
+    <string name="pricing">Pricing</string>
+    <string name="help">Help</string>
+    <string name="privacy">Privacy</string>
+    <string name="terms">Terms And Conditions</string>
+
+    <string name="addInfo">Add Contact Info</string>
+
+
+
+    <!--Internet Alert Messages-->
+    <string name="noInternet">No Internet is available</string>
+    <string name="serverError">Server is not responding, try again later</string>
+    <string name="loading">Loading</string>
+    <string name="searchResults">Search Results</string>
+    <string name="videoError">Video is unknown.</string>
+
+
+    <!-- Menu -->
+    <string name="menuOrder">Order</string>
+    <string name="menuHowItWorks">How it works</string>
+    <string name="menuHelp">Help</string>
+    <string name="menuPricing">Pricing</string>
+    <string name="myProfile">My Profile</string>
+    <string name="menuLegal">Legal</string>
+    <string name="menuPrivacy">Privacy</string>
+    <string name="menuTermsCondition">T&amp;C</string>
+    <string name="comingSoon">(Coming Soon...)</string>
+    <string name="settings">Settings</string>
+    <string name="logOut">Log Out</string>
+
+    <!-- Menu More Options -->
+    <string name="menuEdit">Edit</string>
+    <string name="lahore">Lahore</string>
+    <string name="bahalwapur">Bahawalpur</string>
+    <string name="chishtian">Chishtian</string>
+
+
+
+    <string name="fontSegoeUi">segoeui.ttf</string>
+    <string name="fontSegoeUiLightItalic">seguisli.ttf</string>
+    <string name="fontSegoeUiLight">segoeuil.ttf</string>
+    <string name="fontSegoeUiItalic">segoeuii.ttf</string>
+    <string name="fontSegoeUiSemiLight">segoeuisl.ttf</string>
+    <string name="fontSegoeUiSemiBold">seguisb.ttf</string>
+    <string name="fontSegoeUiBold">segoeuib.ttf</string>
+    <string name="fontMyriadPro">MyriadPro.tff</string>
+
+    <string name="keepMePosted">Keep me posted on the best deals &amp; company news!</string>
+
+    <string name="ok">OK</string>
+    <string name="yes">YES</string>
+    <string name="no">NO</string>
+    <string name="cancel">Cancel</string>
+    <string name="done">Done</string>
+    <string name="CANCEL">CANCEL</string>
+    <string name="deleteOption">Delete</string>
+    <string name="close">Close</string>
+    <string name="open">Open</string>
+    <string name="cancelOption">Cancel</string>
+    <string name="logout">Log Out</string>
+    <string name="ViewDetails">"View Details"</string>
+    <string name="TrimVideo">"TrimVideo"</string>
+
+</resources>
