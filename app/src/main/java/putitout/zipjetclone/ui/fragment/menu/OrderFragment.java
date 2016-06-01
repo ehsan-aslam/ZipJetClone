@@ -18,7 +18,6 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -27,6 +26,7 @@ import java.util.GregorianCalendar;
 import putitout.zipjetclone.R;
 import putitout.zipjetclone.ui.adapter.TimeListAdapter;
 import putitout.zipjetclone.ui.fragment.BaseFragment;
+import putitout.zipjetclone.ui.fragment.contactinfo.AddContactInfoFragment;
 import putitout.zipjetclone.ui.widgets.TypefaceTextView;
 
 /**
@@ -64,8 +64,10 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
     boolean plusRate = true;
     boolean expressRate = true;
 
-    private String[] timeListP1;
-    private String[] timeListP2;
+    private String[] pickUpDateList;
+    private String[] pickUpTimeList;
+    private String[] dropOffDateList;
+    private String[] dropOffTimeList;
 
     private int counter = 1;
     private static ProgressDialog progressDialog;
@@ -109,8 +111,11 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
         dropOffTimeTexView = (TextView) v.findViewById(R.id.dropOffTimeTexView);
         dropOffDateTexView = (TextView) v.findViewById(R.id.dropOffDateTexView);
 
-        timeListP1 = new String[]{"12:00 - 14:00","14:00 - 16:00","16:00 - 18:00","18:00 - 20:00","20:00 - 22:00"};
-        timeListP2 = new String[]{"18:00 - 20:00","20:00 - 22:00"};
+        pickUpDateList = new String[]{"12:00 - 14:00","14:00 - 16:00","16:00 - 18:00","18:00 - 20:00","20:00 - 22:00"};
+        pickUpTimeList = new String[]{"16:00-18:00","18:30 - 20:00","20:30 - 23:00"};
+
+        dropOffDateList = new String[]{"08:00 - 10:00","10:00 - 12:00","12:00 - 14:00","14:00 - 16:00","16:00 - 18:00","18:00 - 20:00","20:00 - 22:00"};
+        dropOffTimeList = new String[]{"14:00 - 16:00","16:00-18:00","18:30 - 20:00","20:30 - 23:00"};
         calculateDays();
 
     }
@@ -132,7 +137,6 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
 
     public void showCustomProgressDialog(){
 
-
         final ProgressDialog dialog = new ProgressDialog(getActivity(),R.style.full_screen_dialog){
             @Override
             protected void onCreate(Bundle savedInstanceState) {
@@ -142,10 +146,8 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
                         RelativeLayout.LayoutParams.FILL_PARENT);
             }
         };
-
         dialog.setCancelable(false);
         dialog.show();
-
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -154,16 +156,13 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
                 dialog.dismiss();
             }
         }, 1000);
-
-
     }
 
     @Override
     public void onStartRefresh() {}
 
     @Override
-    public void onVisible() {
-    }
+    public void onVisible() {}
 
     private void checkFlowAndProceed() {
         progressDialog = ProgressDialog.show(getActivity(), "", "", true);
@@ -180,18 +179,14 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.continueImageView:
-                Toast.makeText(getActivity(), "continue", Toast.LENGTH_LONG).show();
+                replaceFragment(R.id.fragmentContainerLayout,new AddContactInfoFragment(),AddContactInfoFragment.TAG,true);
                 break;
             case R.id.liteImageView:
-
                 if(counter==0){
-
                     liteImageView.setImageResource(R.drawable.lite_imageview);
                     showCustomProgressDialog();
                     counter+=1;
-
                 }
-
                 plusRate = true;
                 expressRate = true;
 //                liteImageView.setImageResource(R.drawable.lite_imageview);
@@ -213,7 +208,6 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
                 if(counter==1){
                     counter--;
                 }
-
                 liteRate = true;
                 expressRate = true;
                 plusImageView.setImageResource(R.drawable.plus_image);
@@ -250,13 +244,13 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
                 }
                 break;
             case R.id.placeTextView:
-                CreateMoreOptionsDialog();
+                selectLocationDialog();
                 break;
             case R.id.dropOffLinearLayout:
                 showDropOffDialog();
                 break;
             case R.id.pickUpLinearLayout:
-                showPickUpDialog();
+                showPickUpTimeDialog();
                 break;
             case R.id.liteTextView:
                 plusRate = true;
@@ -312,16 +306,13 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
                     rateImageView.setVisibility(View.GONE);
                 }
                 break;
-
         }
     }
 
-
-    public void CreateMoreOptionsDialog() {
+    public void selectLocationDialog() {
 
         moreOptionsDialog = new Dialog(getActivity(),R.style.full_screen_dialog);
         moreOptionsDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-
         moreOptionsDialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
         LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View v = inflater.inflate(R.layout.more_options_layout, null);
@@ -338,24 +329,24 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
         moreOptionsDialog.setTitle(null);
         moreOptionsDialog.setContentView(v);
 
-        Button menuDeleteButton = (Button) v.findViewById(R.id.doneButton);
-        menuDeleteButton.setOnClickListener(new View.OnClickListener() {
+        Button lahoreButton = (Button) v.findViewById(R.id.lahoreButton);
+        lahoreButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 placeTextView.setText(R.string.lahore);
                 moreOptionsDialog.dismiss();
             }
         });
-        Button menuCancelButton = (Button) v.findViewById(R.id.menuBerlinButton);
-        menuCancelButton.setOnClickListener(new View.OnClickListener() {
+        Button bhlButton = (Button) v.findViewById(R.id.bhlButton);
+        bhlButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                placeTextView.setText(R.string.berlin);
+                placeTextView.setText(R.string.bahalwapur);
                 moreOptionsDialog.dismiss();
             }
         });
-        Button menuBerliButton = (Button) v.findViewById(R.id.menuBerliButton);
-        menuBerliButton.setOnClickListener(new View.OnClickListener() {
+        Button chisButton = (Button) v.findViewById(R.id.chisButton);
+        chisButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 placeTextView.setText(R.string.chishtian);
@@ -366,11 +357,10 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
     }
 
 
-    public void showPickUpDialog() {
+    public void showPickUpTimeDialog() {
 
         moreOptionsDialog = new Dialog(getActivity(),R.style.full_screen_dialog);
         moreOptionsDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-
         moreOptionsDialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
         LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View v = inflater.inflate(R.layout.time_listview_layout, null);
@@ -409,6 +399,8 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
         calendarDateListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         calendarTimeListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 
+
+
         calendarDateListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -417,22 +409,26 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
                 System.out.println("List Position = : " + selectedFromList);
 //                Toast.makeText(getActivity(),""+selectedFromList,Toast.LENGTH_LONG).show();
 //                Toast.makeText(getActivity(),parent.getItemIdAtPosition(position)+"isSelected",Toast.LENGTH_LONG).show();
-                calendarDateListView.setItemChecked(position, true);
+                calendarTimeListView.setItemChecked(position, true);
                 adapter.notifyDataSetChanged();
                 Calendar c1 = Calendar.getInstance();
                 pickUpDateTexView.setText(selectedFromList);
 
-                TimeListAdapter adapt1 = new TimeListAdapter(getActivity(), timeListP1);
-                calendarTimeListView.setAdapter(adapt1);
-
+                TimeListAdapter pickUpDefaultAdapter = new TimeListAdapter(getActivity(), pickUpDateList);
+                calendarTimeListView.setAdapter(pickUpDefaultAdapter);
+//                calendarTimeListView.setSelection(0);
+                calendarDateListView.setItemChecked(0, true);
+//                calendarTimeListView.getSelectedView().setSelected(true);
                 switch (position){
                     case 0:
-                        TimeListAdapter adapter1 = new TimeListAdapter(getActivity(), timeListP1);
-                        calendarTimeListView.setAdapter(adapter1);
+                        TimeListAdapter pickUpListAdapterOne = new TimeListAdapter(getActivity(), pickUpDateList);
+                        calendarTimeListView.setAdapter(pickUpListAdapterOne);
+                        pickUpDateTexView.setText("Today");
                         break;
                     case 1:
-                        TimeListAdapter adapte = new TimeListAdapter(getActivity(), timeListP2);
-                        calendarTimeListView.setAdapter(adapte);
+                        TimeListAdapter pickUpListAdapterTwo = new TimeListAdapter(getActivity(), pickUpTimeList);
+                        calendarTimeListView.setAdapter(pickUpListAdapterTwo);
+                        pickUpDateTexView.setText("Tomorrow");
                         break;
                 }
             }
@@ -442,12 +438,12 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 view.setSelected(true);
-                String selectedFromList = (String) calendarTimeListView.getItemAtPosition(position);
-                System.out.println("List Position = : " + selectedFromList);
+                String selectedFromPickUpList = (String) calendarTimeListView.getItemAtPosition(position);
+                System.out.println("List Position = : " + selectedFromPickUpList);
 //                Toast.makeText(getActivity(),""+selectedFromList,Toast.LENGTH_LONG).show();
 //                Toast.makeText(getActivity(),parent.getItemIdAtPosition(position)+"isSelected",Toast.LENGTH_LONG).show();
                 calendarTimeListView.setItemChecked(position, true);
-                pickUpTimeTexView.setText(selectedFromList);
+                pickUpTimeTexView.setText(selectedFromPickUpList);
             }
         });
         moreOptionsDialog.setContentView(v);
@@ -457,18 +453,20 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
 
     public void showDropOffDialog() {
 
-        moreOptionsDialog = new Dialog(getActivity(),R.style.full_screen_dialog);
+        moreOptionsDialog = new Dialog(getActivity(),android.R.style.Theme_WallpaperSettings);
         moreOptionsDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-        moreOptionsDialog.getWindow().setLayout(WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT);
+//        moreOptionsDialog.getWindow().setLayout(WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT);
+
+        moreOptionsDialog.getWindow().getAttributes().height = WindowManager.LayoutParams.WRAP_CONTENT;
         LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View v = inflater.inflate(R.layout.time_listview_layout, null);
         Window window = moreOptionsDialog.getWindow();
         WindowManager.LayoutParams windowsLayoutParams = window.getAttributes();
 
         windowsLayoutParams.copyFrom(window.getAttributes());
-        windowsLayoutParams.width = WindowManager.LayoutParams.WRAP_CONTENT;
-        windowsLayoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
+//        windowsLayoutParams.width = WindowManager.LayoutParams.WRAP_CONTENT;
+//        windowsLayoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
         windowsLayoutParams.gravity = Gravity.BOTTOM;
         windowsLayoutParams.flags &= ~WindowManager.LayoutParams.FLAG_DIM_BEHIND;
         window.setAttributes(windowsLayoutParams);
@@ -484,11 +482,13 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
 
         SimpleDateFormat curFormater = new SimpleDateFormat("dd.MMMM ");
         GregorianCalendar date = new GregorianCalendar();
+        date.set(Calendar.DAY_OF_MONTH,03);
+
         String[] dateStringArray = new String[14];
 
         for (int day = 0; day < 14; day++) {
             dateStringArray[day] = curFormater.format(date.getTime());
-            date.roll(Calendar.DAY_OF_YEAR, true);
+            date.roll(Calendar.DAY_OF_YEAR , true);
         }
 
         final ListView calendarDateListView = (ListView) v.findViewById(R.id.calendarDateListView);
@@ -511,17 +511,16 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
                 Calendar c1 = Calendar.getInstance();
                 dropOffDateTexView.setText(selectedFromList);
 
-                TimeListAdapter adapt1 = new TimeListAdapter(getActivity(), timeListP1);
-                calendarTimeListView.setAdapter(adapt1);
-
+                TimeListAdapter dropOffDefaultAdapter = new TimeListAdapter(getActivity(), dropOffDateList);
+                calendarTimeListView.setAdapter(dropOffDefaultAdapter);
                 switch (position){
                     case 0:
-                        TimeListAdapter adapter1 = new TimeListAdapter(getActivity(), timeListP1);
-                        calendarTimeListView.setAdapter(adapter1);
+                        TimeListAdapter dropOffFristAdapter = new TimeListAdapter(getActivity(), dropOffDateList);
+                        calendarTimeListView.setAdapter(dropOffFristAdapter);
                         break;
                     case 1:
-                        TimeListAdapter adapte = new TimeListAdapter(getActivity(), timeListP2);
-                        calendarTimeListView.setAdapter(adapte);
+                        TimeListAdapter dropOffSecondAdapter = new TimeListAdapter(getActivity(), dropOffTimeList);
+                        calendarTimeListView.setAdapter(dropOffSecondAdapter);
                         break;
                 }
             }
@@ -531,17 +530,16 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 view.setSelected(true);
-                String selectedFromList = (String) calendarTimeListView.getItemAtPosition(position);
-                System.out.println("List Position = : " + selectedFromList);
+                String selectedFromDropOffList = (String) calendarTimeListView.getItemAtPosition(position);
+                System.out.println("List Position = : " + selectedFromDropOffList);
 //                Toast.makeText(getActivity(),""+selectedFromList,Toast.LENGTH_LONG).show();
 //                Toast.makeText(getActivity(),parent.getItemIdAtPosition(position)+"isSelected",Toast.LENGTH_LONG).show();
                 calendarTimeListView.setItemChecked(position, true);
-                dropOffTimeTexView.setText(selectedFromList);
+                dropOffTimeTexView.setText(selectedFromDropOffList);
             }
         });
         moreOptionsDialog.setContentView(v);
         moreOptionsDialog.show();
-
     }
 
 }
