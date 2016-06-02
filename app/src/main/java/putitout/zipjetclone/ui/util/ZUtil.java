@@ -41,10 +41,10 @@ public class ZUtil {
 //        return matcher.matches();
     }
 
-    public static void showSaveDataAlert(Context context, DialogInterface.OnClickListener fromGallerydialogListner, DialogInterface.OnClickListener fromCameradialogListner) {
+    public static void showSaveDataAlert(Context context, DialogInterface.OnClickListener continueButton, DialogInterface.OnClickListener cancelButton) {
         new android.app.AlertDialog.Builder(context).setMessage(context.getString(R.string.saveData)).setCancelable(true)
-                .setPositiveButton(context.getString(R.string.continueNext), fromGallerydialogListner)
-                .setNegativeButton(context.getString(R.string.cancel), fromCameradialogListner).show();
+                .setPositiveButton(context.getString(R.string.continueNext), continueButton)
+                .setNegativeButton(context.getString(R.string.cancel), cancelButton).show();
     }
 
 }

@@ -21,6 +21,8 @@ public class TimeListAdapter extends BaseAdapter {
     private Context context;
     private LayoutInflater inflater;
 
+    private int PositionSelected = 0;
+
 
     public TimeListAdapter(Context context,  String[] eventName) {
         this.context = context;
@@ -28,7 +30,10 @@ public class TimeListAdapter extends BaseAdapter {
         inflater = LayoutInflater.from(context);
 
     }
-
+    public void setPositionSelected(int position){
+        PositionSelected = position;
+        this.notifyDataSetChanged();
+    }
 
     @Override
     public int getCount() {
@@ -47,7 +52,9 @@ public class TimeListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+
         ViewHolder viewHolder;
+
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.horizontal_events_layout,parent,false);
 
@@ -59,15 +66,19 @@ public class TimeListAdapter extends BaseAdapter {
             inflater = (LayoutInflater) convertView.getContext()
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-
             viewHolder.timeLineTextView = (TextView) convertView.findViewById(R.id.timeLineTextView);
             viewHolder.timeLineImageView = (ImageView) convertView.findViewById(R.id.timeLineImageView);
-
             convertView.setTag(viewHolder);
-        } else {
+        }
+        else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
+//
+//        if (position == PositionSelected)
+//            viewHolder.timeLineTextView.setTextColor(context.getResources().getColor(R.color.greenColor));
+//        else
+//            viewHolder.timeLineTextView.setTextColor(convertView.getResources().getColor(R.color.darkGreen));
 //        if (position == 0) {
 //
 //            viewHolder.timeLineTextView.setTextColor(convertView.getResources().getColor(R.color.greenColor));

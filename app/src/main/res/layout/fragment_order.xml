@@ -60,7 +60,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2.4"
+            android:layout_weight="2"
             android:visibility="visible"/>
 
         <LinearLayout
@@ -331,7 +331,7 @@
                     android:id="@+id/pickUpDateTexView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="01.June"
+                    android:text="02.June"
                     android:textColor="@color/darkGreen"
                     android:textSize="@dimen/_75px"
                     android:gravity="center"
@@ -475,7 +475,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="6"
+            android:layout_weight="7.7"
             android:orientation="horizontal"
             android:background="@drawable/requestbg">
 

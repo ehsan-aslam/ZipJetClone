@@ -27,6 +27,7 @@ import putitout.zipjetclone.R;
 import putitout.zipjetclone.ui.adapter.TimeListAdapter;
 import putitout.zipjetclone.ui.fragment.BaseFragment;
 import putitout.zipjetclone.ui.fragment.contactinfo.AddContactInfoFragment;
+import putitout.zipjetclone.ui.util.ZPrefs;
 import putitout.zipjetclone.ui.widgets.TypefaceTextView;
 
 /**
@@ -72,6 +73,8 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
     private int counter = 1;
     private static ProgressDialog progressDialog;
     private static final long SPLASH_MILLIS = 2000;
+
+    private String selectedRate = "LITE PACKAGE";
 
     @Override
     public View onCreateView(LayoutInflater inflater,ViewGroup container,Bundle savedInstanceState) {
@@ -179,7 +182,20 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.continueImageView:
+
+                String pickUpDate = pickUpDateTexView.getText().toString();
+                String pickUpTime = pickUpTimeTexView.getText().toString();
+                String dropOffDate = dropOffDateTexView.getText().toString();
+                String dropOffTime = dropOffTimeTexView.getText().toString();
+
+                ZPrefs.saveString(getActivity(), ZPrefs.KEY_RATE, selectedRate);
+                ZPrefs.saveString(getActivity(), ZPrefs.KEY_PICK_UP_DATE, pickUpDate);
+                ZPrefs.saveString(getActivity(), ZPrefs.KEY_PICK_UP_TIME, pickUpTime);
+                ZPrefs.saveString(getActivity(), ZPrefs.KEY_DROP_OFF_TIME, dropOffTime);
+                ZPrefs.saveString(getActivity(),ZPrefs.KEY_DROP_OFF_DATE, dropOffDate);
+
                 replaceFragment(R.id.fragmentContainerLayout,new AddContactInfoFragment(),AddContactInfoFragment.TAG,true);
+
                 break;
             case R.id.liteImageView:
                 if(counter==0){
@@ -203,6 +219,8 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
                     liteRate = true;
                     rateImageView.setVisibility(View.GONE);
                 }
+
+                selectedRate = "LITE  PACKAGE";
                 break;
             case R.id.plusImageView:
                 if(counter==1){
@@ -224,6 +242,7 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
                     plusRate = true;
                     rateImageView.setVisibility(View.GONE);
                 }
+                selectedRate = "PLUS  PACKAGE";
                 break;
             case R.id.expressImageView:
                 liteRate = true;
@@ -242,6 +261,8 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
                     expressRate = true;
                     rateImageView.setVisibility(View.GONE);
                 }
+
+                selectedRate = "Express  PACKAGE";
                 break;
             case R.id.placeTextView:
                 selectLocationDialog();
@@ -410,14 +431,14 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
 //                Toast.makeText(getActivity(),""+selectedFromList,Toast.LENGTH_LONG).show();
 //                Toast.makeText(getActivity(),parent.getItemIdAtPosition(position)+"isSelected",Toast.LENGTH_LONG).show();
                 calendarTimeListView.setItemChecked(position, true);
-                adapter.notifyDataSetChanged();
+//                adapter.notifyDataSetChanged();
                 Calendar c1 = Calendar.getInstance();
                 pickUpDateTexView.setText(selectedFromList);
 
                 TimeListAdapter pickUpDefaultAdapter = new TimeListAdapter(getActivity(), pickUpDateList);
                 calendarTimeListView.setAdapter(pickUpDefaultAdapter);
 //                calendarTimeListView.setSelection(0);
-                calendarDateListView.setItemChecked(0, true);
+//                calendarDateListView.setItemChecked(0, true);
 //                calendarTimeListView.getSelectedView().setSelected(true);
                 switch (position){
                     case 0:
@@ -482,7 +503,7 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
 
         SimpleDateFormat curFormater = new SimpleDateFormat("dd.MMMM ");
         GregorianCalendar date = new GregorianCalendar();
-        date.set(Calendar.DAY_OF_MONTH,03);
+        date.set(Calendar.DAY_OF_MONTH,05);
 
         String[] dateStringArray = new String[14];
 

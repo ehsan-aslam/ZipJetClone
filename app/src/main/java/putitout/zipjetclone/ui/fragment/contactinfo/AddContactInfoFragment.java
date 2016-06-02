@@ -10,7 +10,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import putitout.zipjetclone.R;
 import putitout.zipjetclone.ui.activity.HomeActivity;
@@ -110,22 +109,30 @@ public class AddContactInfoFragment extends BaseFragment implements View.OnClick
                 && !ZUtil.isEmpty(firstNameEditText.getText().toString())
                 && !ZUtil.isEmpty(emailEditText.getText().toString())
                 && ZUtil.emailValidator(emailEditText.getText().toString())) {
-            login(firstNameEditText.getText().toString(), LastNameEditText.getText().toString());
+            login(firstNameEditText.getText().toString(), LastNameEditText.getText().toString(),
+                    emailEditText.getText().toString(),phoneEditText.getText().toString());
         }
     }
 
 
-    private void login(String firstName, String lastName) {
+    private void login(String firstName, String lastName ,String email, String phoneNumber) {
 //        if (NetworkUtil.checkIfNetworkAvailable(this)) {
 //            NetworkMananger.loginUserApi(this, email, password, this, LOGIN_USER);
 //        } else {
 //            KUtil.showNetworkErrorAlertDialog(this);
 //        }
+        ConfirmationFragment confirmationFragment = new ConfirmationFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("firstName", firstName);
+        bundle.putString("lastName", lastName);
+        bundle.putString("email", email);
+        bundle.putString("phoneNumber", phoneNumber);
+        confirmationFragment.setArguments(bundle);
+        replaceFragment(R.id.fragmentContainerLayout,confirmationFragment,ConfirmationFragment.TAG,true);
 
-        Toast.makeText(getActivity(),""+firstName+""+lastName,Toast.LENGTH_LONG).show();
         saveContactButton.setBackgroundResource(R.drawable.save_contact_details);
 
-        showConfirmDetailsDialog();
+//        showConfirmDetailsDialog();
     }
     @Override
     public boolean isPullToRefreshEnable() {
@@ -146,7 +153,6 @@ public class AddContactInfoFragment extends BaseFragment implements View.OnClick
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.saveContactButton:
-                Toast.makeText(getActivity(),"Save Details",Toast.LENGTH_LONG).show();
                 validateFields();
                 break;
             case R.id.checkImageView:
@@ -173,6 +179,7 @@ public class AddContactInfoFragment extends BaseFragment implements View.OnClick
 //                startActivityForResult(
 //                        Intent.createChooser(intent, "Select File"),
 //                        FROM_GALLERY);
+
                 replaceFragment(R.id.fragmentContainerLayout,new ConfirmationFragment(),ConfirmationFragment.TAG,true);
                 dialog.dismiss();
             }

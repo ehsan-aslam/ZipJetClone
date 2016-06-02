@@ -262,7 +262,8 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener,O
                             fragmentName.equals(PricingFragment.TAG) ||
                             fragmentName.equals(PrivacyFragment.TAG) ||
                             fragmentName.equals(TCFragment.TAG) ||
-                            fragmentName.equals(AddContactInfoFragment.TAG)) {
+                            fragmentName.equals(AddContactInfoFragment.TAG)||
+                            fragmentName.equals(ConfirmationFragment.TAG)) {
                         pricingImageView.setVisibility(View.INVISIBLE);
                     } else {
                         pricingImageView.setVisibility(View.VISIBLE);

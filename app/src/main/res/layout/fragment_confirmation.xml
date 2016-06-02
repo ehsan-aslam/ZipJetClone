@@ -1,13 +1,464 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.6"
+        android:visibility="visible"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4.7"
+        android:orientation="horizontal"
+        android:background="@drawable/namebg">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/greyColor"
+            android:layout_weight="3.8"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2.8"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="15.9"
+            android:gravity="center"
+            android:textColor="@color/darkBlack"
+            android:textStyle="bold|italic"
+            android:textSize="@dimen/_56px"
+            android:text="First Name:"
+            android:visibility="visible"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3.8"/>
+
+        <TextView
+            android:id="@+id/firstNameTextView"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="46"
+            android:hint="First Name"
+            android:textColorHint="@color/darkGrey"
+            android:textSize="@dimen/_65px"
+            android:singleLine="true"
+            android:textColor="@color/greenColor"
+            android:background="@null"
+            android:maxLength="25"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:scrollbars="horizontal"
+            android:gravity="center|start"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/greyColor"
+            android:layout_weight="3.8"/>
+
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.2dp"
+        android:visibility="visible"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4.7"
+        android:orientation="horizontal"
+        android:background="@drawable/lastnamebg">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/greyColor"
+            android:layout_weight="3.8"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2.8"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="15.9"
+            android:gravity="center"
+            android:text="Last Name:"
+            android:textColor="@color/darkBlack"
+            android:textStyle="bold|italic"
+            android:textSize="@dimen/_56px"
+            android:visibility="visible" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3.8"/>
+
+        <EditText
+            android:id="@+id/LastNameTextView"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="46"
+            android:hint="LastName"
+            android:textColorHint="@color/darkGrey"
+            android:textSize="@dimen/_65px"
+            android:singleLine="true"
+            android:textColor="@color/greenColor"
+            android:background="@null"
+            android:maxLength="25"
+            android:inputType="textPersonName"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:scrollbars="horizontal"
+            android:gravity="center|start"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/greyColor"
+            android:layout_weight="3.8"/>
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="4.7"
+    android:orientation="horizontal"
+    android:background="@drawable/emailbg">
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/greyColor"
+        android:layout_weight="3.8"/>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2.8"/>
 
     <TextView
-        android:layout_width="wrap_content"
+
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="21"
+        android:gravity="center|start"
+        android:text="Email Address:"
+        android:textColor="@color/darkBlack"
+        android:textStyle="bold|italic"
+        android:textSize="@dimen/_56px"
+        android:visibility="visible" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/emailTextView"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="46"
+        android:textSize="@dimen/_65px"
+        android:textColor="@color/greenColor"
+        android:maxLength="45"
+        android:hint="LastName"
+        android:scrollbars="horizontal"
+        android:gravity="center|start"/>
+
+    <View
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Confirmation"
-        android:textSize="@dimen/_72px"
-        android:layout_centerInParent="true"
-        android:id="@+id/textView3" />
-</RelativeLayout>
+        android:background="@color/greyColor"
+        android:layout_weight="3.8"/>
+
+</LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4.7"
+        android:orientation="horizontal"
+        android:background="@drawable/emailbg">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/greyColor"
+            android:layout_weight="3.8"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2.8"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="20"
+            android:gravity="center|start"
+            android:text="Phone No:"
+            android:textColor="@color/darkBlack"
+            android:textStyle="bold|italic"
+            android:textSize="@dimen/_56px"
+            android:visibility="visible" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/phoneNumberTextView"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="46"
+            android:textSize="@dimen/_65px"
+            android:singleLine="true"
+            android:textColor="@color/greenColor"
+            android:background="@null"
+            android:inputType="textEmailAddress"
+            android:maxLength="35"
+            android:maxLines="1"
+            android:hint="LastName"
+            android:ellipsize="end"
+            android:scrollbars="horizontal"
+            android:gravity="center|start"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/greyColor"
+            android:layout_weight="3.8"/>
+
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2.2"
+        android:visibility="visible"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4.7"
+        android:orientation="horizontal"
+        android:background="@drawable/emailbg">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/greyColor"
+            android:layout_weight="3.8"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2.8"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="24.5"
+            android:gravity="center|start"
+            android:textColor="@color/darkBlack"
+            android:textStyle="bold|italic"
+            android:textSize="@dimen/_56px"
+            android:text="Selected Rate is:"
+            android:visibility="visible" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"/>
+
+        <TextView
+            android:id="@+id/rateTextView"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="46"
+            android:hint="Email Address"
+            android:textColorHint="@color/darkGrey"
+            android:textSize="@dimen/_65px"
+            android:singleLine="true"
+            android:textColor="@color/greenColor"
+            android:background="@null"
+            android:inputType="textEmailAddress"
+            android:maxLength="25"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:scrollbars="horizontal"
+            android:gravity="center|start"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/greyColor"
+            android:layout_weight="3.8"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4.7"
+        android:orientation="horizontal"
+        android:background="@drawable/emailbg">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/greyColor"
+            android:layout_weight="3.8"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2.8"/>
+
+        <TextView
+            android:id="@+id/pickUpTextView"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="21.5"
+            android:gravity="center|start"
+            android:text="Pick UP Time:"
+            android:textColor="@color/darkBlack"
+            android:textStyle="bold|italic"
+            android:textSize="@dimen/_56px"
+            android:visibility="visible" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5.5"/>
+
+        <TextView
+            android:id="@+id/pickUpDateTexView"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="46"
+            android:hint="Email Address"
+            android:textColorHint="@color/darkGrey"
+            android:textSize="@dimen/_65px"
+            android:singleLine="true"
+            android:textColor="@color/greenColor"
+            android:background="@null"
+            android:inputType="textEmailAddress"
+            android:maxLength="25"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:scrollbars="horizontal"
+            android:gravity="center|start"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/greyColor"
+            android:layout_weight="3.8"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4.7"
+        android:orientation="horizontal"
+        android:background="@drawable/emailbg"
+        android:visibility="visible">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/greyColor"
+            android:layout_weight="3.8"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2.8"/>
+
+        <TextView
+            android:id="@+id/checkImageView"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="21.5"
+            android:gravity="center|start"
+            android:textColor="@color/darkBlack"
+            android:textStyle="bold|italic"
+            android:textSize="@dimen/_56px"
+            android:text="DropOff Time:" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5.5"/>
+
+        <TextView
+            android:id="@+id/dropOffDateTextView"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="46"
+            android:hint="Email Address"
+            android:textSize="@dimen/_65px"
+            android:textColor="@color/greenColor"
+            android:maxLines="2"
+            android:gravity="center|start"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/greyColor"
+            android:layout_weight="3.8"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:visibility="visible"/>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="7">
+
+        <Button
+            android:id="@+id/saveOrderButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/save_contact_details"
+            android:text="Confirm Order"
+            android:textSize="@dimen/_60px"
+            android:textStyle="bold"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+
+
+
+</LinearLayout>
+
