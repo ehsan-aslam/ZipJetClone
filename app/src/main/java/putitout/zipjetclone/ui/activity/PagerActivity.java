@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import putitout.zipjetclone.R;
@@ -19,11 +18,12 @@ import putitout.zipjetclone.ui.adapter.ImagePagerAdapter;
  */
 public class PagerActivity extends Activity implements View.OnClickListener {
 
-    private ViewPager galleryImageViewPager;
-    private ImagePagerAdapter albumImagePagerAdapter;
-    private ImageView startLogin;
-    private int[] galleryImageFlag;
-    LinearLayout ll;
+    private ViewPager imageViewPager;
+    private ImagePagerAdapter imagePagerAdapter;
+    private ImageView startImageView;
+    private ImageView loginImageView;
+    private int[] slideImages;
+
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -56,25 +56,29 @@ public class PagerActivity extends Activity implements View.OnClickListener {
 
     }
     public void initWidget() {
-        galleryImageFlag = new int[]{R.drawable.first_scren, R.drawable.second_scren,
-                R.drawable.third_scren, R.drawable.fourth_scren
-        };
-        galleryImageViewPager = (ViewPager) findViewById(R.id.imageViewPager);
-        albumImagePagerAdapter = new ImagePagerAdapter(this, galleryImageFlag);
-        startLogin = (ImageView) findViewById(R.id.startLogin);
-        startLogin.setOnClickListener(this);
-        galleryImageViewPager.setAdapter(albumImagePagerAdapter);
-        albumImagePagerAdapter.notifyDataSetChanged();
-        galleryImageViewPager.setCurrentItem(0);
+        slideImages = new int[]{R.drawable.first_scren, R.drawable.second_scren,
+                R.drawable.third_scren, R.drawable.fourth_scren};
 
-//        ll= (LinearLayout) findViewById(R.id.ll);
+        imageViewPager = (ViewPager) findViewById(R.id.imageViewPager);
+        imagePagerAdapter = new ImagePagerAdapter(this,slideImages);
+        startImageView = (ImageView) findViewById(R.id.startImageView);
+        loginImageView = (ImageView) findViewById(R.id.loginImageView);
+        loginImageView.setOnClickListener(this);
+        startImageView.setOnClickListener(this);
+        imageViewPager.setAdapter(imagePagerAdapter);
+        imagePagerAdapter.notifyDataSetChanged();
+        imageViewPager.setCurrentItem(0);
+
     }
 
     @Override
     public void onClick(View v) {
         switch(v.getId()){
-            case R.id.startLogin:
+            case R.id.startImageView:
                 startActivity(new Intent(this,HomeActivity.class));
+                break;
+            case R.id.loginImageView:
+                startActivity(new Intent(this,LoginActivity.class));
                 break;
         }
 

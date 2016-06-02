@@ -384,7 +384,7 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
         moreOptionsDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         moreOptionsDialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
         LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View v = inflater.inflate(R.layout.time_listview_layout, null);
+        View v = inflater.inflate(R.layout.dialog_listview_layout, null);
         Window window = moreOptionsDialog.getWindow();
         WindowManager.LayoutParams windowsLayoutParams = window.getAttributes();
 
@@ -481,7 +481,7 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
 
         moreOptionsDialog.getWindow().getAttributes().height = WindowManager.LayoutParams.WRAP_CONTENT;
         LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View v = inflater.inflate(R.layout.time_listview_layout, null);
+        View v = inflater.inflate(R.layout.dialog_listview_layout, null);
         Window window = moreOptionsDialog.getWindow();
         WindowManager.LayoutParams windowsLayoutParams = window.getAttributes();
 

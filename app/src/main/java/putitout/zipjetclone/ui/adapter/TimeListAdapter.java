@@ -56,7 +56,7 @@ public class TimeListAdapter extends BaseAdapter {
         ViewHolder viewHolder;
 
         if (convertView == null) {
-            convertView = inflater.inflate(R.layout.horizontal_events_layout,parent,false);
+            convertView = inflater.inflate(R.layout.listview_time_layout,parent,false);
 
             viewHolder = new ViewHolder();
 

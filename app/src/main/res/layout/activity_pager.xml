@@ -2,15 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/greenColor">
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="69.4"
-        android:orientation="horizontal"
-        android:weightSum="100">
+        android:layout_weight="92.5"
+        android:orientation="horizontal">
 
         <android.support.v4.view.ViewPager
             android:id="@+id/imageViewPager"
@@ -20,11 +18,28 @@
 
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/startLogin"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="7.5"
-        android:src="@drawable/start_image"/>
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/loginImageView"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:layout_weight="7.5"
+            android:src="@drawable/login_icon"/>
+
+        <ImageView
+            android:id="@+id/startImageView"
+            android:layout_width="0dp"
+            android:scaleType="centerCrop"
+            android:layout_height="match_parent"
+            android:layout_weight="7.5"
+            android:src="@drawable/startnow_icon"/>
+
+    </LinearLayout>
 
 </LinearLayout>

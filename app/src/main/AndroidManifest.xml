@@ -57,7 +57,7 @@
             android:theme="@android:style/Theme.Light.NoTitleBar"/>
 
         <activity
-            android:name=".ui.activity.SimpleLayout"
+            android:name=".ui.activity.LoginActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Light.NoTitleBar"/>
