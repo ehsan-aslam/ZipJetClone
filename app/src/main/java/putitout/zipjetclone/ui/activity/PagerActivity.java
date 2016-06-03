@@ -22,7 +22,7 @@ public class PagerActivity extends Activity implements View.OnClickListener {
     private ImagePagerAdapter imagePagerAdapter;
     private ImageView startImageView;
     private ImageView loginImageView;
-    private int[] slideImages;
+    private int[] sliderImages;
 
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
@@ -56,11 +56,11 @@ public class PagerActivity extends Activity implements View.OnClickListener {
 
     }
     public void initWidget() {
-        slideImages = new int[]{R.drawable.first_scren, R.drawable.second_scren,
+        sliderImages = new int[]{R.drawable.first_scren, R.drawable.second_scren,
                 R.drawable.third_scren, R.drawable.fourth_scren};
 
         imageViewPager = (ViewPager) findViewById(R.id.imageViewPager);
-        imagePagerAdapter = new ImagePagerAdapter(this,slideImages);
+        imagePagerAdapter = new ImagePagerAdapter(this, sliderImages);
         startImageView = (ImageView) findViewById(R.id.startImageView);
         loginImageView = (ImageView) findViewById(R.id.loginImageView);
         loginImageView.setOnClickListener(this);
@@ -68,7 +68,6 @@ public class PagerActivity extends Activity implements View.OnClickListener {
         imageViewPager.setAdapter(imagePagerAdapter);
         imagePagerAdapter.notifyDataSetChanged();
         imageViewPager.setCurrentItem(0);
-
     }
 
     @Override

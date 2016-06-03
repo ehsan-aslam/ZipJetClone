@@ -141,7 +141,7 @@
             android:layout_weight="3.8"/>
 
         <EditText
-            android:id="@+id/emailEitText"
+            android:id="@+id/emailLoginEitText"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="46"
@@ -195,7 +195,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3.9"
-                android:src="@drawable/email"
+                android:src="@drawable/password_icon"
                 android:visibility="visible" />
 
             <View
@@ -204,7 +204,7 @@
                 android:layout_weight="3.8"/>
 
             <EditText
-                android:id="@+id/emailEditText"
+                android:id="@+id/passwordEditText"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="46"
@@ -214,7 +214,7 @@
                 android:singleLine="true"
                 android:textColor="@color/darkGreen"
                 android:background="@null"
-                android:inputType="textEmailAddress"
+                android:inputType="textPassword"
                 android:maxLength="35"
                 android:maxLines="1"
                 android:ellipsize="end"
