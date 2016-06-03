@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
@@ -20,17 +21,22 @@ import putitout.zipjetclone.ui.util.ZUtil;
 /**
  * Created by SA on 6/1/2016.
  */
-public class AddContactInfoFragment extends BaseFragment implements View.OnClickListener {
+public class AddContactInfoFragment extends BaseFragment implements View.OnClickListener,View.OnTouchListener {
 
     public static final String TAG = AddContactInfoFragment.class.getSimpleName();
 
     private Button saveContactButton;
     private ImageView checkImageView;
+    private ImageView firstPersonImageView;
+    private ImageView emailImageView;
+    private ImageView lastNameImageView;
+
 
     private EditText firstNameEditText;
     private EditText LastNameEditText;
     private EditText phoneEditText;
     private EditText emailEditText;
+
 
     boolean isClick = true;
 
@@ -52,6 +58,10 @@ public class AddContactInfoFragment extends BaseFragment implements View.OnClick
         saveContactButton.setOnClickListener(this);
         checkImageView= (ImageView) v.findViewById(R.id.checkImageView);
         checkImageView.setOnClickListener(this);
+        lastNameImageView = (ImageView) v.findViewById(R.id.lastNameImageView);
+        firstPersonImageView= (ImageView) v.findViewById(R.id.firstPersonImageView);
+        emailImageView = (ImageView) v.findViewById(R.id.emailImageView);
+
 
         firstNameEditText = (EditText) v.findViewById(R.id.firstNameEditText);
         firstNameEditText.requestFocus();
@@ -63,6 +73,9 @@ public class AddContactInfoFragment extends BaseFragment implements View.OnClick
         phoneEditText = (EditText) v.findViewById(R.id.phoneEditText);
         emailEditText = (EditText) v.findViewById(R.id.emailEditText);
 
+        LastNameEditText.setOnTouchListener(this);
+        firstNameEditText.setOnTouchListener(this);
+        emailEditText.setOnTouchListener(this);
     }
 
     @Override
@@ -164,6 +177,7 @@ public class AddContactInfoFragment extends BaseFragment implements View.OnClick
                     isClick=true;
                 }
                 break;
+
         }
     }
 
@@ -192,4 +206,27 @@ public class AddContactInfoFragment extends BaseFragment implements View.OnClick
             }
         });
     }
-}
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        switch (v.getId()) {
+                case R.id.firstNameEditText:
+                    firstPersonImageView.setImageResource(R.drawable.person_face_highlighted);
+                    lastNameImageView.setImageResource(R.drawable.person_face_off);
+                    emailImageView.setImageResource(R.drawable.email);
+                    break;
+                case R.id.LastNameEditText:
+                    firstPersonImageView.setImageResource(R.drawable.person_face_off);
+                    emailImageView.setImageResource(R.drawable.email);
+                    lastNameImageView.setImageResource(R.drawable.person_face_highlighted);
+                    break;
+                case R.id.emailEditText:
+                    firstPersonImageView.setImageResource(R.drawable.person_face_off);
+                    emailImageView.setImageResource(R.drawable.email_off);
+                    lastNameImageView.setImageResource(R.drawable.person_face_off);
+                    break;
+            }
+
+            return false;
+        }
+    }

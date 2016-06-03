@@ -56,7 +56,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
                 if(getEmail.isEmpty() && getPassword.isEmpty()){
 
-                    Toast.makeText(this,"Enter Some data first",Toast.LENGTH_LONG).show();
+                    Toast.makeText(this,"Please Enter the Email and Password",Toast.LENGTH_LONG).show();
                 }else{
 
                 if(getEmail.equalsIgnoreCase(email) && (getPassword.equalsIgnoreCase(password))){
