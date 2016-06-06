@@ -3,6 +3,7 @@ package putitout.zipjetclone.ui.fragment.menu;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.format.DateFormat;
@@ -26,6 +27,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 import putitout.zipjetclone.R;
+import putitout.zipjetclone.ui.activity.MapActivity;
 import putitout.zipjetclone.ui.adapter.TimeListAdapter;
 import putitout.zipjetclone.ui.fragment.BaseFragment;
 import putitout.zipjetclone.ui.fragment.contactinfo.AddContactInfoFragment;
@@ -366,6 +368,8 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
         lahoreButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), MapActivity.class);
+                startActivity(intent);
                 placeTextView.setText(R.string.lahore);
                 moreOptionsDialog.dismiss();
             }
