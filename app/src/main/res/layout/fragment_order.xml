@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/greyColor">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -54,9 +55,6 @@
 
         <!--</LinearLayout>-->
 
-
-
-
         <View
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -68,9 +66,7 @@
             android:layout_height="0dp"
             android:layout_weight="29.1"
             android:orientation="vertical"
-            android:background="@drawable/ratebg">
-
-
+            android:background="@drawable/rates_bg">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -78,8 +74,7 @@
                 android:layout_weight="1.5"
                 android:orientation="horizontal"
                 android:layout_gravity="center"
-                android:gravity="center"
-                >
+                android:gravity="center">
 
                 <View
                     android:layout_width="0dp"
@@ -95,8 +90,7 @@
                     android:gravity="center|end"
                     android:textSize="@dimen/_66px"
                     android:textColor="@color/greenColor"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/lite_imageview"/>
+                    android:layout_height="wrap_content"/>
 
                 <View
                     android:layout_width="0dp"
@@ -138,7 +132,6 @@
 
             </LinearLayout>
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -151,8 +144,6 @@
                     android:background="@color/greyColor"
                     android:layout_weight="3.8"/>
 
-
-
                 <ImageView
                     android:id="@+id/liteImageView"
                     android:layout_width="0dp"
@@ -160,7 +151,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:layout_gravity="center|center_vertical|end"
-                    android:src="@drawable/lite_imageview"/>
+                    android:src="@drawable/lite_icon"/>
 
                 <View
                     android:layout_width="0dp"
@@ -192,14 +183,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="-1dp"
                     android:src="@drawable/express_off"/>
+
                 <View
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@color/greyColor"
                     android:layout_weight="3.8"/>
+
             </LinearLayout>
-
-
 
             <!--<RelativeLayout-->
             <!--android:layout_width="match_parent"-->
@@ -211,7 +202,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="6.5"
                 android:id="@+id/rateLinearLayout"
-                android:background="@drawable/ratebg"
+                android:background="@drawable/rates_bg"
                 android:orientation="horizontal">
 
                 <View
@@ -227,6 +218,7 @@
                     android:layout_weight="92"
                     android:scaleType="fitXY"
                     android:src="@drawable/lite_rate"/>
+
                 <View
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -266,18 +258,12 @@
 
         <!--</LinearLayout>-->
 
-
-
         <View
             android:id="@+id/view1"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="2.5"
-
-
             android:visibility="visible"/>
-
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -297,7 +283,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="46"
-                android:background="@drawable/pickupimage"
+                android:background="@drawable/pickup_time_bg"
                 android:orientation="vertical">
 
                 <TextView
@@ -333,8 +319,7 @@
                     android:text="02.June"
                     android:textColor="@color/darkGreen"
                     android:textSize="@dimen/_66px"
-                    android:layout_marginLeft="10dp"
-                    android:layout_gravity="start"
+                    android:layout_marginLeft="15dp"
                     android:layout_marginTop="5dp"
                     android:visibility="visible"/>
 
@@ -345,7 +330,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="46"
-                android:background="@drawable/dropoffimage"
+                android:background="@drawable/drop_time_bg"
                 android:orientation="vertical">
 
                 <TextView
@@ -394,7 +379,7 @@
             <!--android:layout_width="0dp"-->
             <!--android:layout_height="match_parent"-->
             <!--android:layout_weight="46"-->
-            <!--android:src="@drawable/dropoffimage"-->
+            <!--android:src="@drawable/drop_time_bg"-->
             <!--android:visibility="visible" />-->
             <View
                 android:layout_width="0dp"
@@ -415,13 +400,14 @@
             android:layout_height="0dp"
             android:layout_weight="7.7"
             android:orientation="horizontal"
-            android:background="@drawable/placeimage">
+            android:background="@drawable/place_bg">
 
             <View
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="@color/greyColor"
                 android:layout_weight="3.8"/>
+
             <View
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -432,7 +418,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3.9"
-                android:src="@drawable/placestatic"
+                android:src="@drawable/place_icon"
                 android:visibility="visible"/>
 
             <View
@@ -445,13 +431,10 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="46"
-                android:scaleType="fitXY"
-                android:src="@drawable/dropoffimage"
                 android:text="Lahore"
                 android:textSize="@dimen/_75px"
                 android:textColor="@color/darkGreen"
-                android:gravity="center|start"
-                android:visibility="visible"/>
+                android:gravity="center|start"/>
 
             <View
                 android:layout_width="0dp"
@@ -472,7 +455,7 @@
             android:layout_height="0dp"
             android:layout_weight="7.7"
             android:orientation="horizontal"
-            android:background="@drawable/requestbg">
+            android:background="@drawable/request_bg">
 
             <View
                 android:layout_width="0dp"
@@ -490,7 +473,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3.9"
-                android:src="@drawable/writeimage"
+                android:src="@drawable/write_icon"
                 android:visibility="visible" />
 
             <View
@@ -523,8 +506,6 @@
 
         </LinearLayout>
 
-
-
         <View
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -541,13 +522,11 @@
 
     </LinearLayout>
 
-
     <ImageView
         android:id="@+id/continueImageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-
         android:scaleType="fitXY"
         android:src="@drawable/continue_button"/>
 

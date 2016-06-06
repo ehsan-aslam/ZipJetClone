@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:my="http://schemas.android.com/tools"
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -46,7 +44,8 @@
                 android:layout_centerVertical="true"
                 android:visibility="visible"
                 android:layout_marginRight="15dp"
-                android:src="@drawable/priceimageview" />
+                android:padding="10dp"
+                android:src="@drawable/priceimageview"/>
 
             <ImageView
                 android:id="@+id/showAlbumImageImageView"
@@ -56,7 +55,8 @@
                 android:layout_centerVertical="true"
                 android:layout_marginRight="15dp"
                 android:visibility="gone"
-                android:src="@android:drawable/ic_menu_share" />
+                android:src="@android:drawable/ic_menu_share"/>
+
             <TextView
                 android:id="@+id/postHeaderTextView"
                 android:layout_width="wrap_content"
@@ -67,7 +67,7 @@
                 android:textStyle="bold"
                 android:textSize="@dimen/_72px"
                 android:textColor="@color/white"
-                android:visibility="invisible" />
+                android:visibility="invisible"/>
 
             <ImageView
                 android:id="@+id/searchImageView"
@@ -75,9 +75,9 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="25dp"
-
                 android:src="@drawable/tapimage"
                 android:visibility="gone"/>
+
             <ImageView
                 android:id="@+id/homeImageView"
                 android:layout_width="wrap_content"
@@ -108,13 +108,13 @@
                 android:src="@drawable/tapimage"
                 android:visibility="visible" />
 
-
             <ImageView
                 android:id="@+id/backImageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="15dp"
+                android:padding="10dp"
                 android:src="@drawable/back_arrow"
                 android:visibility="invisible" />
 
@@ -128,8 +128,6 @@
             android:scaleType="fitXY"
             android:visibility="gone"
             android:src="@drawable/continue_button"/>
-
-
 
         <ImageView
             android:id="@+id/liteRateImageView"
@@ -151,13 +149,12 @@
 
     </putitout.zipjetclone.ui.widgets.KeyboardDetectorRelativeLayout>
 
-
     <include
         android:id="@+id/menuDrawer"
         layout="@layout/menu_layout"
         android:layout_width="300dp"
         android:layout_height="match_parent"
-        android:layout_gravity="start" />
+        android:layout_gravity="start"/>
 
 </android.support.v4.widget.DrawerLayout>
     <!--android:src="@drawable/plus_image"-->

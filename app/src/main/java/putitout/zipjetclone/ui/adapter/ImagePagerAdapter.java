@@ -14,20 +14,17 @@ import putitout.zipjetclone.R;
 
 public class ImagePagerAdapter extends PagerAdapter {
     private LayoutInflater inflater;
-    Context context;
-    String[] rank;
-    String[] country;
-    String[] population;
-    int[] imagesFlag;
+    private Context context;
+    private int[] sliderImages;
 
     public ImagePagerAdapter(Context context, int[] imagesFlag) {
         this.context = context;
-        this.imagesFlag = imagesFlag;
+        this.sliderImages = imagesFlag;
     }
 
     @Override
     public int getCount() {
-        return imagesFlag.length;
+        return sliderImages.length;
     }
 
     @Override
@@ -38,17 +35,15 @@ public class ImagePagerAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
         // Declare Variables
-        ImageView galleryImageView;
+        ImageView sliderImageView;
 
-        inflater = (LayoutInflater) context
-                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View itemView = inflater.inflate(R.layout.image_pager, container,
-                false);
+        inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        View itemView = inflater.inflate(R.layout.image_pager, container, false);
         // Locate the ImageView in viewpager_item.xml
-        galleryImageView = (ImageView) itemView.findViewById(R.id.imageDetailImageView);
+        sliderImageView = (ImageView) itemView.findViewById(R.id.sliderImageView);
         // Capture position and set to the ImageView
-        galleryImageView.setImageResource(imagesFlag[position]);
-
+        sliderImageView.setImageResource(sliderImages[position]);
         // Add viewpager_item.xml to ViewPager
         ((ViewPager) container).addView(itemView);
         return itemView;
@@ -58,6 +53,5 @@ public class ImagePagerAdapter extends PagerAdapter {
     public void destroyItem(ViewGroup container, int position, Object object) {
         // Remove viewpager_item.xml from ViewPager
         ((ViewPager) container).removeView((LinearLayout) object);
-
     }
 }

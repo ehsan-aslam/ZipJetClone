@@ -16,7 +16,7 @@ import putitout.zipjetclone.R;
 public class TimeListAdapter extends BaseAdapter {
 
 
-    private  String[] eventName;
+    private  String[] calendarDateAndTime;
     private int[] eventImage;
     private Context context;
     private LayoutInflater inflater;
@@ -24,9 +24,9 @@ public class TimeListAdapter extends BaseAdapter {
     private int PositionSelected = 0;
 
 
-    public TimeListAdapter(Context context,  String[] eventName) {
+    public TimeListAdapter(Context context,  String[] calendarDateAndTime) {
         this.context = context;
-        this.eventName = eventName;
+        this.calendarDateAndTime = calendarDateAndTime;
         inflater = LayoutInflater.from(context);
 
     }
@@ -37,12 +37,12 @@ public class TimeListAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return eventName.length;
+        return calendarDateAndTime.length;
     }
 
     @Override
     public Object getItem(int position) {
-        return eventName[position];
+        return calendarDateAndTime[position];
     }
 
     @Override
@@ -60,35 +60,18 @@ public class TimeListAdapter extends BaseAdapter {
 
             viewHolder = new ViewHolder();
 
-            TextView timeLineTextView;
-            ImageView timeLineImageView;
+            inflater = (LayoutInflater) convertView.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-            inflater = (LayoutInflater) convertView.getContext()
-                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-            viewHolder.timeLineTextView = (TextView) convertView.findViewById(R.id.timeLineTextView);
-            viewHolder.timeLineImageView = (ImageView) convertView.findViewById(R.id.timeLineImageView);
+            viewHolder.dateAndTimeTextView = (TextView) convertView.findViewById(R.id.dateAndTimeTextView);
+            viewHolder.imageView = (ImageView) convertView.findViewById(R.id.imageView);
             convertView.setTag(viewHolder);
         }
         else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-//
-//        if (position == PositionSelected)
-//            viewHolder.timeLineTextView.setTextColor(context.getResources().getColor(R.color.greenColor));
-//        else
-//            viewHolder.timeLineTextView.setTextColor(convertView.getResources().getColor(R.color.darkGreen));
-//        if (position == 0) {
-//
-//            viewHolder.timeLineTextView.setTextColor(convertView.getResources().getColor(R.color.greenColor));
-//        }
-//        else {
-//            viewHolder.timeLineTextView.setTextColor(convertView.getResources().getColor(R.color.darkGreen));
-//
-//        }
-        viewHolder.timeLineTextView.setText(eventName[position]);
-//        viewHolder.timeLineImageView.setImageResource(eventImage[position]);
+        viewHolder.dateAndTimeTextView.setText(calendarDateAndTime[position]);
+//        viewHolder.imageView.setImageResource(eventImage[position]);
 
         return convertView;
     }
@@ -96,7 +79,23 @@ public class TimeListAdapter extends BaseAdapter {
 
 
 class ViewHolder {
-    TextView timeLineTextView;
-    ImageView timeLineImageView;
+    TextView dateAndTimeTextView;
+    ImageView imageView;
 }
 
+
+
+
+//
+//        if (position == PositionSelected)
+//            viewHolder.dateAndTimeTextView.setTextColor(context.getResources().getColor(R.color.greenColor));
+//        else
+//            viewHolder.dateAndTimeTextView.setTextColor(convertView.getResources().getColor(R.color.darkGreen));
+//        if (position == 0) {
+//
+//            viewHolder.dateAndTimeTextView.setTextColor(convertView.getResources().getColor(R.color.greenColor));
+//        }
+//        else {
+//            viewHolder.dateAndTimeTextView.setTextColor(convertView.getResources().getColor(R.color.darkGreen));
+//
+//        }

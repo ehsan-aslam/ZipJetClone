@@ -47,7 +47,7 @@
         android:id="@+id/liteImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/lite_imageview"
+        android:src="@drawable/lite_icon"
         android:layout_marginTop="73dp"
         android:layout_marginLeft="26dp"/>
 

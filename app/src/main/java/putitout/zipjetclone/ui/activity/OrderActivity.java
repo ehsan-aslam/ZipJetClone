@@ -62,7 +62,7 @@ public class OrderActivity extends Activity implements View.OnClickListener{
 
                 if(counter==0){
 
-                    liteImageView.setImageResource(R.drawable.lite_imageview);
+                    liteImageView.setImageResource(R.drawable.lite_icon);
                     checkFlowAndProceed();
                     counter+=1;
 

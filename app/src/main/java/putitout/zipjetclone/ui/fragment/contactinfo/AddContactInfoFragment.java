@@ -31,15 +31,12 @@ public class AddContactInfoFragment extends BaseFragment implements View.OnClick
     private ImageView emailImageView;
     private ImageView lastNameImageView;
 
-
     private EditText firstNameEditText;
     private EditText LastNameEditText;
     private EditText phoneEditText;
     private EditText emailEditText;
 
-
     boolean isClick = true;
-
     private HomeActivity mHomeActivity;
 
 
@@ -127,7 +124,6 @@ public class AddContactInfoFragment extends BaseFragment implements View.OnClick
         }
     }
 
-
     private void login(String firstName, String lastName ,String email, String phoneNumber) {
 //        if (NetworkUtil.checkIfNetworkAvailable(this)) {
 //            NetworkMananger.loginUserApi(this, email, password, this, LOGIN_USER);
@@ -142,9 +138,7 @@ public class AddContactInfoFragment extends BaseFragment implements View.OnClick
         bundle.putString("phoneNumber", phoneNumber);
         confirmationFragment.setArguments(bundle);
         replaceFragment(R.id.fragmentContainerLayout,confirmationFragment,ConfirmationFragment.TAG,true);
-
         saveContactButton.setBackgroundResource(R.drawable.save_contact_details);
-
 //        showConfirmDetailsDialog();
     }
     @Override
@@ -153,14 +147,10 @@ public class AddContactInfoFragment extends BaseFragment implements View.OnClick
     }
 
     @Override
-    public void onStartRefresh() {
-
-    }
+    public void onStartRefresh() {}
 
     @Override
-    public void onVisible() {
-
-    }
+    public void onVisible() {}
 
     @Override
     public void onClick(View v) {
@@ -177,31 +167,18 @@ public class AddContactInfoFragment extends BaseFragment implements View.OnClick
                     isClick=true;
                 }
                 break;
-
         }
     }
-
-
     private void showConfirmDetailsDialog() {
         ZUtil.showSaveDataAlert(getActivity(), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-//                Intent intent = new Intent(
-//                        Intent.ACTION_PICK,
-//                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-//                intent.setType("image/*");
-//                startActivityForResult(
-//                        Intent.createChooser(intent, "Select File"),
-//                        FROM_GALLERY);
-
                 replaceFragment(R.id.fragmentContainerLayout,new ConfirmationFragment(),ConfirmationFragment.TAG,true);
                 dialog.dismiss();
             }
         }, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-//                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//                startActivityForResult(intent, REQUEST_CAMERA);
                 dialog.dismiss();
             }
         });
@@ -210,23 +187,22 @@ public class AddContactInfoFragment extends BaseFragment implements View.OnClick
     @Override
     public boolean onTouch(View v, MotionEvent event) {
         switch (v.getId()) {
-                case R.id.firstNameEditText:
-                    firstPersonImageView.setImageResource(R.drawable.person_face_highlighted);
-                    lastNameImageView.setImageResource(R.drawable.person_face_off);
-                    emailImageView.setImageResource(R.drawable.email);
-                    break;
-                case R.id.LastNameEditText:
-                    firstPersonImageView.setImageResource(R.drawable.person_face_off);
-                    emailImageView.setImageResource(R.drawable.email);
-                    lastNameImageView.setImageResource(R.drawable.person_face_highlighted);
-                    break;
-                case R.id.emailEditText:
-                    firstPersonImageView.setImageResource(R.drawable.person_face_off);
-                    emailImageView.setImageResource(R.drawable.email_off);
-                    lastNameImageView.setImageResource(R.drawable.person_face_off);
-                    break;
-            }
-
-            return false;
+            case R.id.firstNameEditText:
+                firstPersonImageView.setImageResource(R.drawable.person_face_highlighted);
+                lastNameImageView.setImageResource(R.drawable.person_face_off);
+                emailImageView.setImageResource(R.drawable.email);
+                break;
+            case R.id.LastNameEditText:
+                firstPersonImageView.setImageResource(R.drawable.person_face_off);
+                emailImageView.setImageResource(R.drawable.email);
+                lastNameImageView.setImageResource(R.drawable.person_face_highlighted);
+                break;
+            case R.id.emailEditText:
+                firstPersonImageView.setImageResource(R.drawable.person_face_off);
+                emailImageView.setImageResource(R.drawable.email_off);
+                lastNameImageView.setImageResource(R.drawable.person_face_off);
+                break;
         }
+        return false;
     }
+}

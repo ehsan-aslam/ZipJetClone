@@ -1,13 +1,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/greenColor"
         android:orientation="vertical"
-        android:alpha="0.75" >
+        android:alpha="0.75">
     </RelativeLayout>
 
     <ProgressBar
@@ -18,5 +19,6 @@
         android:layout_gravity="center"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:indeterminateDrawable="@drawable/loader_file1" />
+        android:indeterminateDrawable="@drawable/loader_file1"/>
+
 </RelativeLayout>

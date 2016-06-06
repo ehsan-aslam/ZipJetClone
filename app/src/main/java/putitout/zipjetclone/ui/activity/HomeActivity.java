@@ -53,7 +53,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener,O
     private DrawerLayout drawerLayout;
     private LinearLayout drawerMenuLinearLayout;
     private FrameLayout fragmentContainerLayout;
-    String fragmentName;
+    private String fragmentName;
 
     long timeInMillis;
 
@@ -80,7 +80,6 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener,O
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-
                 dialog.dismiss();
             }
         }, 1000);
@@ -280,6 +279,4 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener,O
             }
         });
     }
-
-
 }

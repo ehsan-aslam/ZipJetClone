@@ -38,7 +38,7 @@
             android:scaleType="centerCrop"
             android:layout_height="match_parent"
             android:layout_weight="7.5"
-            android:src="@drawable/startnow_icon"/>
+            android:src="@drawable/start_now_icon"/>
 
     </LinearLayout>
 

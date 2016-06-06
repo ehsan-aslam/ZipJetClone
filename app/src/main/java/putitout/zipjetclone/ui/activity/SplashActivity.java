@@ -21,13 +21,6 @@ public class SplashActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-
-//        Window window = this.getWindow();
-//        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-//        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-//        window.setStatusBarColor(this.getResources().getColor(R.color.greenBarColor));
-
-
         initWidget();
     }
     public void initWidget() {
@@ -45,3 +38,8 @@ public class SplashActivity extends Activity {
         }, SPLASH_MILLIS);
     }
 }
+
+//        Window window = this.getWindow();
+//        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+//        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+//        window.setStatusBarColor(this.getResources().getColor(R.color.greenBarColor));

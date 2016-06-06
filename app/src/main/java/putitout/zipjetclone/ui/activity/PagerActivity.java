@@ -30,32 +30,12 @@ public class PagerActivity extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pager);
-//        getWindow().setStatusBarColor(Color.TRANSPARENT);
-//        Window window = this.getWindow();
-//        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-////        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-////        window.setStatusBarColor(Color.TRANSPARENT);
-//
-//        SystemBarTintManager tintManager = new SystemBarTintManager(this);
-//        // enable status bar tint
-//        tintManager.setStatusBarTintEnabled(true);
-//        // enable navigation bar tint
-//        tintManager.setNavigationBarTintEnabled(true);
-//        tintManager.setTintColor(Color.parseColor("#99000FF"));
-
-//        getWindow().getDecorView().setSystemUiVisibility( View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-//                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-//
-//        getWindow().setStatusBarColor(Color.TRANSPARENT);
-
         initWidget();
-
-//        SystemBarTintManager.SystemBarConfig config = tintManager.getConfig();
-//        ll.setPadding(0, config.getPixelInsetTop(), config.getPixelInsetRight(), config.getPixelInsetBottom());
         Toast.makeText(this,"Swipe Left And Right For Demo",Toast.LENGTH_LONG).show();
-
     }
+
     public void initWidget() {
+
         sliderImages = new int[]{R.drawable.first_scren, R.drawable.second_scren,
                 R.drawable.third_scren, R.drawable.fourth_scren};
 
@@ -80,6 +60,27 @@ public class PagerActivity extends Activity implements View.OnClickListener {
                 startActivity(new Intent(this,LoginActivity.class));
                 break;
         }
-
     }
 }
+
+
+//        getWindow().setStatusBarColor(Color.TRANSPARENT);
+//        Window window = this.getWindow();
+//        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+////        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+////        window.setStatusBarColor(Color.TRANSPARENT);
+//
+//        SystemBarTintManager tintManager = new SystemBarTintManager(this);
+//        // enable status bar tint
+//        tintManager.setStatusBarTintEnabled(true);
+//        // enable navigation bar tint
+//        tintManager.setNavigationBarTintEnabled(true);
+//        tintManager.setTintColor(Color.parseColor("#99000FF"));
+
+//        getWindow().getDecorView().setSystemUiVisibility( View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+//                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+//
+//        getWindow().setStatusBarColor(Color.TRANSPARENT);
+
+//        SystemBarTintManager.SystemBarConfig config = tintManager.getConfig();
+//        ll.setPadding(0, config.getPixelInsetTop(), config.getPixelInsetRight(), config.getPixelInsetBottom());

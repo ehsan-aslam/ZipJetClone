@@ -6,7 +6,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/zipjet_splash"
+        android:src="@drawable/zip_jet_splash"
         android:scaleType="fitXY" />
 
     <ProgressBar

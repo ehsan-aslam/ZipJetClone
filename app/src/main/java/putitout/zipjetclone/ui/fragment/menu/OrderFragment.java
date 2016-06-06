@@ -213,13 +213,13 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
                 break;
             case R.id.liteImageView:
                 if(counter==0){
-                    liteImageView.setImageResource(R.drawable.lite_imageview);
+                    liteImageView.setImageResource(R.drawable.lite_icon);
                     showCustomProgressDialog();
                     counter+=1;
                 }
                 plusRate = true;
                 expressRate = true;
-//                liteImageView.setImageResource(R.drawable.lite_imageview);
+//                liteImageView.setImageResource(R.drawable.lite_icon);
                 plusImageView.setImageResource(R.drawable.plus_off);
                 expressImageView.setImageResource(R.drawable.express_off);
                 rateImageView.setImageResource(R.drawable.lite_rate);
@@ -233,7 +233,6 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
                     liteRate = true;
                     rateImageView.setVisibility(View.GONE);
                 }
-
                 selectedRate = "LITE  PACKAGE";
                 break;
             case R.id.plusImageView:
@@ -275,7 +274,6 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
                     expressRate = true;
                     rateImageView.setVisibility(View.GONE);
                 }
-
                 selectedRate = "Express  PACKAGE";
                 break;
             case R.id.placeTextView:
@@ -290,7 +288,7 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
             case R.id.liteTextView:
                 plusRate = true;
                 expressRate = true;
-                liteImageView.setImageResource(R.drawable.lite_imageview);
+                liteImageView.setImageResource(R.drawable.lite_icon);
                 plusImageView.setImageResource(R.drawable.plus_off);
                 expressImageView.setImageResource(R.drawable.express_off);
                 rateImageView.setImageResource(R.drawable.lite_rate);
