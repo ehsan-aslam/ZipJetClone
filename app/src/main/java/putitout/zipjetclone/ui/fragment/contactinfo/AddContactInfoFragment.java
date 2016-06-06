@@ -126,7 +126,7 @@ public class AddContactInfoFragment extends BaseFragment implements View.OnClick
 
     private void login(String firstName, String lastName ,String email, String phoneNumber) {
 //        if (NetworkUtil.checkIfNetworkAvailable(this)) {
-//            NetworkMananger.loginUserApi(this, email, password, this, LOGIN_USER);
+//            NetworkMananger.loginUserApi(this, email_off_icon, password, this, LOGIN_USER);
 //        } else {
 //            KUtil.showNetworkErrorAlertDialog(this);
 //        }
@@ -134,7 +134,7 @@ public class AddContactInfoFragment extends BaseFragment implements View.OnClick
         Bundle bundle = new Bundle();
         bundle.putString("firstName", firstName);
         bundle.putString("lastName", lastName);
-        bundle.putString("email", email);
+        bundle.putString("email_off_icon", email);
         bundle.putString("phoneNumber", phoneNumber);
         confirmationFragment.setArguments(bundle);
         replaceFragment(R.id.fragmentContainerLayout,confirmationFragment,ConfirmationFragment.TAG,true);
@@ -190,16 +190,16 @@ public class AddContactInfoFragment extends BaseFragment implements View.OnClick
             case R.id.firstNameEditText:
                 firstPersonImageView.setImageResource(R.drawable.person_face_highlighted);
                 lastNameImageView.setImageResource(R.drawable.person_face_off);
-                emailImageView.setImageResource(R.drawable.email);
+                emailImageView.setImageResource(R.drawable.email_off_icon);
                 break;
             case R.id.LastNameEditText:
                 firstPersonImageView.setImageResource(R.drawable.person_face_off);
-                emailImageView.setImageResource(R.drawable.email);
+                emailImageView.setImageResource(R.drawable.email_off_icon);
                 lastNameImageView.setImageResource(R.drawable.person_face_highlighted);
                 break;
             case R.id.emailEditText:
                 firstPersonImageView.setImageResource(R.drawable.person_face_off);
-                emailImageView.setImageResource(R.drawable.email_off);
+                emailImageView.setImageResource(R.drawable.email_on_icon);
                 lastNameImageView.setImageResource(R.drawable.person_face_off);
                 break;
         }

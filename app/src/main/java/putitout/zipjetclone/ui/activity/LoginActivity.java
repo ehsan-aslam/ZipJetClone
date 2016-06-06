@@ -66,7 +66,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                     this.finish();
 
                 }else {
-                    Toast.makeText(this,"Your email or password is incorrect",Toast.LENGTH_LONG).show();
+                    Toast.makeText(this,"Your email_off_icon or password is incorrect",Toast.LENGTH_LONG).show();
                     confirmImageView.setImageResource(R.drawable.uncheck_confirm);
                 }
             }

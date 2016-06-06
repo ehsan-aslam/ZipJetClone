@@ -68,7 +68,7 @@ public class ConfirmationFragment extends BaseFragment implements View.OnClickLi
         Bundle bundle = this.getArguments();
         String firstName = bundle.getString("firstName");
         String lastName = bundle.getString("lastName");
-        String email = bundle.getString("email");
+        String email = bundle.getString("email_off_icon");
         String phoneNumber = bundle.getString("phoneNumber");
 
         firstNameTextView.setText(firstName);

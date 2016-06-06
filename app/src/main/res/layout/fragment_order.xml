@@ -32,7 +32,7 @@
         <!--android:layout_height="wrap_content"-->
         <!--android:layout_weight="2"-->
         <!--android:scaleType="fitXY"-->
-        <!--android:src="@drawable/tapimage"/>-->
+        <!--android:src="@drawable/menu_icon"/>-->
 
         <!--<View-->
         <!--android:layout_width="0dp"-->

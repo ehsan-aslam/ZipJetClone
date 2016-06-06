@@ -35,9 +35,9 @@ public class ZUtil {
 //        Matcher matcher;
 //        final String EMAIL_PATTERN =
 //        //"^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
-//        if (email != null) email = email.trim();
+//        if (email_off_icon != null) email_off_icon = email_off_icon.trim();
 //        pattern = Pattern.compile(EMAIL_PATTERN);
-//        matcher = pattern.matcher(email);
+//        matcher = pattern.matcher(email_off_icon);
 //        return matcher.matches();
     }
 
