@@ -34,7 +34,7 @@ import putitout.zipjetclone.ui.widgets.TypefaceTextView;
  */
 public class HomeActivity extends BaseActivity implements View.OnClickListener,OnDateTimePickerListener {
 
-
+    private static final String TAG = HomeActivity.class.getSimpleName();
     private ImageView menuImageView;
     private ImageView pricingImageView;
     private ImageView backImageView;
@@ -54,6 +54,8 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener,O
     private LinearLayout drawerMenuLinearLayout;
     private FrameLayout fragmentContainerLayout;
     private String fragmentName;
+    private double latitude ;
+    private double longitude ;
 
     long timeInMillis;
 
@@ -112,8 +114,29 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener,O
         menuTCTextView = (TextView) findViewById(R.id.menuTCTextView);
         menuTCTextView.setOnClickListener(this);
 
+        Bundle bundle = getIntent().getExtras();
+//        longitude = bundle.getDouble("long");
+
+        if(bundle!=null) {
+            latitude = bundle.getDouble("lat");
+            longitude = bundle.getDouble("long");
+            ZLog.info(TAG + "latitude :" + latitude);
+            ZLog.info(TAG + "longitude :" + longitude);
+        } else {
+            ZLog.info(TAG + ""+ bundle);
+        }
+
+
+
+        Bundle bundl = new Bundle();
+
+        bundl.putDouble("lat",latitude);
+        bundl.putDouble("long",longitude);
+
+        ConfirmationFragment orderFragment = new ConfirmationFragment();
+        orderFragment.setArguments(bundl);
         getSupportFragmentManager().beginTransaction().
-                add(R.id.fragmentContainerLayout,new OrderFragment(),OrderFragment.TAG).
+                replace(R.id.fragmentContainerLayout,new OrderFragment(),OrderFragment.TAG).
                 commit();
         registerBackStackListener();
 
@@ -121,6 +144,21 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener,O
 //        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 //        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
 //        window.setStatusBarColor(this.getResources().getColor(R.color.greenBarColor));
+
+
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+//        OrderFragment orderFragment = (OrderFragment) getSupportFragmentManager().findFragmentByTag(OrderFragment.TAG);
+//        if (orderFragment != null) {
+//            orderFragment.onActivityResult(requestCode, resultCode, data);
+//            return;
+//        }
+
 
     }
 

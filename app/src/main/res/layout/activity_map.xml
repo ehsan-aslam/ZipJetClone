@@ -12,11 +12,12 @@
 
 
     <ImageView
+        android:id="@+id/confirmAddressImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-        android:layout_alignBottom="@+id/map"
-
+        android:paddingBottom="@dimen/_110px"
+        android:layout_centerInParent="true"
+        android:layout_alignParentBottom="true"
         android:src="@drawable/confirm_address"/>
 
 </RelativeLayout>

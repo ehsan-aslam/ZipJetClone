@@ -3,14 +3,17 @@ package putitout.zipjetclone.ui.fragment.contactinfo;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import putitout.zipjetclone.R;
 import putitout.zipjetclone.ui.activity.HomeActivity;
@@ -62,6 +65,7 @@ public class AddContactInfoFragment extends BaseFragment implements View.OnClick
 
         firstNameEditText = (EditText) v.findViewById(R.id.firstNameEditText);
         firstNameEditText.requestFocus();
+        firstPersonImageView.setImageResource(R.drawable.person_face_highlighted);
         InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
         inputMethodManager.showSoftInput(firstNameEditText, 0);
         inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
@@ -69,6 +73,59 @@ public class AddContactInfoFragment extends BaseFragment implements View.OnClick
         LastNameEditText = (EditText) v.findViewById(R.id.LastNameEditText);
         phoneEditText = (EditText) v.findViewById(R.id.phoneEditText);
         emailEditText = (EditText) v.findViewById(R.id.emailEditText);
+
+        firstNameEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_NEXT) {
+                    firstPersonImageView.setImageResource(R.drawable.person_face_off);
+                    emailImageView.setImageResource(R.drawable.email_off_icon);
+                    lastNameImageView.setImageResource(R.drawable.person_face_highlighted);
+                    LastNameEditText.requestFocus();
+                    return true;
+                }
+                return false;
+            }
+        });
+
+        LastNameEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_NEXT){
+                    firstPersonImageView.setImageResource(R.drawable.person_face_off);
+                    lastNameImageView.setImageResource(R.drawable.person_face_off);
+                    emailImageView.setImageResource(R.drawable.email_on_icon);
+                    emailEditText.requestFocus();
+                }
+                return false;
+            }
+        });
+
+        emailEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_NEXT){
+                    firstPersonImageView.setImageResource(R.drawable.person_face_off);
+                    lastNameImageView.setImageResource(R.drawable.person_face_off);
+                    emailImageView.setImageResource(R.drawable.email_off_icon);
+
+                }
+                return false;
+            }
+        });
+
+        phoneEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_NEXT){
+                    firstPersonImageView.setImageResource(R.drawable.person_face_off);
+                    lastNameImageView.setImageResource(R.drawable.person_face_off);
+                    emailImageView.setImageResource(R.drawable.email_off_icon);
+
+                }
+                return false;
+            }
+        });
 
         LastNameEditText.setOnTouchListener(this);
         firstNameEditText.setOnTouchListener(this);
@@ -201,6 +258,11 @@ public class AddContactInfoFragment extends BaseFragment implements View.OnClick
                 firstPersonImageView.setImageResource(R.drawable.person_face_off);
                 emailImageView.setImageResource(R.drawable.email_on_icon);
                 lastNameImageView.setImageResource(R.drawable.person_face_off);
+                break;
+            case R.id.phoneEditText:
+                firstPersonImageView.setImageResource(R.drawable.person_face_off);
+                lastNameImageView.setImageResource(R.drawable.person_face_off);
+                emailImageView.setImageResource(R.drawable.email_off_icon);
                 break;
         }
         return false;

@@ -1,7 +1,6 @@
 package putitout.zipjetclone.ui.fragment.confirmation;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +12,7 @@ import android.widget.Toast;
 import putitout.zipjetclone.R;
 import putitout.zipjetclone.ui.activity.HomeActivity;
 import putitout.zipjetclone.ui.fragment.BaseFragment;
+import putitout.zipjetclone.ui.util.ZLog;
 import putitout.zipjetclone.ui.util.ZPrefs;
 
 /**
@@ -33,8 +33,12 @@ public class ConfirmationFragment extends BaseFragment implements View.OnClickLi
     private TextView rateTextView;
     private TextView pickUpDateTexView;
     private TextView dropOffDateTextView;
+    private TextView locationTextView;
 
     private Button saveOrderButton;
+
+    private double lat;
+    private double lon;
 
     String selectedRate;
 
@@ -60,6 +64,7 @@ public class ConfirmationFragment extends BaseFragment implements View.OnClickLi
         rateTextView = (TextView) v.findViewById(R.id.rateTextView);
         pickUpDateTexView = (TextView) v.findViewById(R.id.pickUpDateTexView);
         dropOffDateTextView = (TextView) v.findViewById(R.id.dropOffDateTextView);
+        locationTextView = (TextView) v.findViewById(R.id.locationTextView);
 
         saveOrderButton = (Button) v.findViewById(R.id.saveOrderButton);
         saveOrderButton.setOnClickListener(this);
@@ -82,16 +87,22 @@ public class ConfirmationFragment extends BaseFragment implements View.OnClickLi
         String pickUpDate = ZPrefs.getString(getActivity(),ZPrefs.KEY_PICK_UP_DATE,"");
         String dropOffTime = ZPrefs.getString(getActivity(),ZPrefs.KEY_DROP_OFF_TIME,"");
         String dropOffDate = ZPrefs.getString(getActivity(),ZPrefs.KEY_DROP_OFF_DATE,"");
+        String address = ZPrefs.getString(getActivity(),ZPrefs.KEY_ADDRESS,"");
         rateTextView.setText(selectedRate);
         pickUpDateTexView.setText(pickUpDate+" "+"-"+pickUpTime);
         dropOffDateTextView.setText(dropOffDate+" "+"-"+dropOffTime);
 
-        Log.i(TAG,"selectedRate:" + selectedRate);
-        Log.i(TAG,"pickUpTime: " + pickUpTime);
-        Log.i(TAG,"dropOffTime:" + dropOffTime);
+        ZLog.info(""+TAG + "address:" + address);
+        ZLog.info(""+TAG + "pickUpTime: " + pickUpTime);
+        ZLog.info(""+TAG + "dropOffTime:" + dropOffTime);
 
         Toast.makeText(getActivity(),"Following are your details",Toast.LENGTH_LONG).show();
 
+        lat = Double.longBitsToDouble(ZPrefs.getLong(getActivity(),ZPrefs.KEY_LATITUDE,0));
+        lon = Double.longBitsToDouble(ZPrefs.getLong(getActivity(),ZPrefs.KEY_LONGITUDE,0));
+
+        locationTextView.setText(address + "," + "Lahore");
+//        +"Lahore " + "--" + "  "+"Lat: " + lat + " , " + " Long: " + lon
     }
 
     @Override
@@ -106,14 +117,10 @@ public class ConfirmationFragment extends BaseFragment implements View.OnClickLi
     }
 
     @Override
-    public void onStartRefresh() {
-
-    }
+    public void onStartRefresh() {}
 
     @Override
-    public void onVisible() {
-
-    }
+    public void onVisible() {}
 
     @Override
     public void onClick(View v) {

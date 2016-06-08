@@ -15,7 +15,9 @@ public class ZPrefs {
     public static final String KEY_DROP_OFF_TIME = "KEY_DROP_OFF_TIME";
     public static final String KEY_PICK_UP_DATE = "KEY_PICK_UP_DATE";
     public static final String KEY_DROP_OFF_DATE = "KEY_DROP_OFF_DATE";
-    public static final String KEY_USER_STATUS = "KEY_USER_STATUS";
+    public static final String KEY_LATITUDE = "KEY_LATITUDE";
+    public static final String KEY_LONGITUDE = "KEY_LONGITUDE";
+    public static final String KEY_ADDRESS = "KEY_ADDRESS";
 
     public static SharedPreferences sharePreference = null;
 
@@ -38,4 +40,19 @@ public class ZPrefs {
     public static String getString(Context context, String key,String defaultValue) {
         return getSharedPreference(context).getString(key, defaultValue);
     }
+
+    public static void saveInt(Context context, String key, int value) {
+        getSharedPreference(context).edit().putInt(key, value).commit();
+    }
+
+    public static Long getLong(Context context, String key, long defaultValue) {
+        return getSharedPreference(context).getLong(key, defaultValue);
+    }
+
+    public static void saveLong(Context context, String key, long value) {
+        getSharedPreference(context).edit().putLong(key, value).commit();
+    }
+//    prefsEditor.putLong("Latitude", Double.doubleToLongBits(location.getLatitude()));
+
+
 }

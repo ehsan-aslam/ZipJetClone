@@ -27,6 +27,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 import putitout.zipjetclone.R;
+import putitout.zipjetclone.ui.activity.HomeActivity;
 import putitout.zipjetclone.ui.activity.MapActivity;
 import putitout.zipjetclone.ui.adapter.TimeListAdapter;
 import putitout.zipjetclone.ui.fragment.BaseFragment;
@@ -41,6 +42,8 @@ import putitout.zipjetclone.ui.widgets.TypefaceTextView;
 public class OrderFragment extends BaseFragment implements View.OnClickListener{
 
     public static final String TAG = OrderFragment.class.getSimpleName();
+
+    private HomeActivity homeActivity;
 
     private ImageView continueImageView;
     private ImageView liteImageView;
@@ -83,6 +86,9 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
 
     private String selectedRate = "LITE PACKAGE";
 
+    private Double lat;
+    private Double lon;
+
     @Override
     public View onCreateView(LayoutInflater inflater,ViewGroup container,Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_order, container, false);
@@ -92,6 +98,8 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
     }
 
     public void widgets(View v){
+
+        homeActivity = (HomeActivity) getActivity();
         continueImageView = (ImageView) v.findViewById(R.id.continueImageView);
         plusImageView = (ImageView) v.findViewById(R.id.plusImageView);
         expressImageView = (ImageView) v.findViewById(R.id.expressImageView);
@@ -137,7 +145,39 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
         dropOffTimeListP7 = new String[]{"12:00 - 14:00","14:00 - 16:00","16:00 - 18:00","22:00 - 00:00"};
         calculateDays();
 
+
+//        Bundle test = getArguments();
+//        if(test!=null){
+//            lat = getArguments().getDouble("lat");
+//            lon = getArguments().getDouble("long");
+//            ZLog.info(TAG + ":" + lat);
+//            ZLog.info(TAG + ":" + lon);
+//            placeTextView.setText("LAhore"+ "" +lat );
+//        }
+//        else{
+//
+//            ZLog.info(TAG + ""+lat);
+//        }
+
+
+
+//        if(lat!=null) {
+//            lat = getArguments().getDouble("lat");
+//
+//            ZLog.info(TAG + ":" + lat);
+//        }
+//        else{
+//
+//            ZLog.info(TAG + ""+lat);
+//        }
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+//        placeTextView.setText(R.string.lahore + "" +lat );
+    }
+
     @Override
     public boolean isPullToRefreshEnable() {
         return false;
@@ -175,6 +215,19 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
                 dialog.dismiss();
             }
         }, 1000);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == getActivity().RESULT_OK) {
+
+            if (data != null) {
+                // get the returned data
+                Bundle extras = data.getExtras();
+                // get the cropped bitmap
+
+            }
+        }
     }
 
     @Override
@@ -370,7 +423,9 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), MapActivity.class);
                 startActivity(intent);
-                placeTextView.setText(R.string.lahore);
+                getActivity().finish();
+                homeActivity.finish();
+                placeTextView.setText(R.string.lahore );
                 moreOptionsDialog.dismiss();
             }
         });
