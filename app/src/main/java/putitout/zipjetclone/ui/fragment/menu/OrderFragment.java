@@ -21,6 +21,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -32,7 +33,9 @@ import putitout.zipjetclone.ui.activity.MapActivity;
 import putitout.zipjetclone.ui.adapter.TimeListAdapter;
 import putitout.zipjetclone.ui.fragment.BaseFragment;
 import putitout.zipjetclone.ui.fragment.contactinfo.AddContactInfoFragment;
+import putitout.zipjetclone.ui.util.ZLog;
 import putitout.zipjetclone.ui.util.ZPrefs;
+import putitout.zipjetclone.ui.util.ZUtil;
 import putitout.zipjetclone.ui.widgets.TypefaceTextView;
 
 /**
@@ -85,9 +88,13 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
     private static final long SPLASH_MILLIS = 2000;
 
     private String selectedRate = "LITE PACKAGE";
+    String pickUpDate ;
+    String dropOffDate;
 
     private Double lat;
     private Double lon;
+
+    GregorianCalendar date;
 
     @Override
     public View onCreateView(LayoutInflater inflater,ViewGroup container,Bundle savedInstanceState) {
@@ -129,10 +136,7 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
         dropOffTimeTexView = (TextView) v.findViewById(R.id.dropOffTimeTexView);
         dropOffDateTexView = (TextView) v.findViewById(R.id.dropOffDateTexView);
 
-        Date d = new Date();
-        CharSequence s  = DateFormat.format("dd.MMMM", d.getTime());
 
-        pickUpDateTexView.setText(s);
 
 
         pickUpTimeListP0 = new String[]{"00:00 - 02:00","12:00 - 14:00","14:00 - 16:00","16:00 - 18:00"};
@@ -143,39 +147,72 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
         dropOffTimeListP1 = new String[]{"00:00 - 02:00","11:00 - 13:00","13:00 - 15:00","22:00 - 00:00"};
         dropOffTimeListP6 = new String[]{"00:00 - 02:00","12:00 - 14:00","14:00 - 16:00","16:00 - 18:00"};
         dropOffTimeListP7 = new String[]{"12:00 - 14:00","14:00 - 16:00","16:00 - 18:00","22:00 - 00:00"};
-        calculateDays();
 
+//        showDateAndTime();
 
-//        Bundle test = getArguments();
-//        if(test!=null){
-//            lat = getArguments().getDouble("lat");
-//            lon = getArguments().getDouble("long");
-//            ZLog.info(TAG + ":" + lat);
-//            ZLog.info(TAG + ":" + lon);
-//            placeTextView.setText("LAhore"+ "" +lat );
-//        }
+        Date d = new Date();
+        CharSequence s  = DateFormat.format("dd.MMMM", d.getTime());
+
+        pickUpDateTexView.setText(s);
+
+    }
+
+    public void showDateAndTime(){
+
+//        if(pickUpDate != null && dropOffDate !=null) {
+
+//            if (dropOffDate.contains(pickUpDate)) {
+//
+//                ZUtil.showAlert(getActivity(), "equal");
+//            }
 //        else{
-//
-//            ZLog.info(TAG + ""+lat);
-//        }
+//                ZUtil.showAlert(getActivity(), "no equal");
+//            }
 
+            if (dropOffDate.trim().equals(pickUpDate)&&(pickUpDate.equals(dropOffDate.trim()))) {
 
+//                ZUtil.showAlert(getActivity(), "equal");
 
-//        if(lat!=null) {
-//            lat = getArguments().getDouble("lat");
-//
-//            ZLog.info(TAG + ":" + lat);
+                String dt = "2008-01-01";  // Start date
+                SimpleDateFormat sdf = new SimpleDateFormat("dd.MMMM");
+                Calendar c = Calendar.getInstance();
+                try {
+                    c.setTime(sdf.parse(dropOffDate));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                c.add(Calendar.DATE, 1);  // number of days to add
+                dropOffDate = sdf.format(c.getTime());
+
+                dropOffDateTexView.setText(dropOffDate);
+            }
+            else{
+                ZUtil.showAlert(getActivity(), "no equal");
+            }
 //        }
-//        else{
+////        else {
+//            if (dropOffDateTexView.equals(pickUpDateTexView)) {
 //
-//            ZLog.info(TAG + ""+lat);
-//        }
+//                ZUtil.showAlert(getActivity(), "ok");
+//            }
+//            else{
+//                ZUtil.showAlert(getActivity(), "no equal");
+//            }
+////        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        showDateAndTime();
     }
 
     @Override
     public void onResume() {
         super.onResume();
 //        placeTextView.setText(R.string.lahore + "" +lat );
+//        showDateAndTime();
     }
 
     @Override
@@ -183,15 +220,6 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
         return false;
     }
 
-    public void calculateDays(){
-        SimpleDateFormat curFormater = new SimpleDateFormat("EEEE, MMMM dd, yyyy");
-        GregorianCalendar date = new GregorianCalendar();
-        String[] dateStringArray = new String[14];
-        for (int day = 0; day < 14; day++) {
-            dateStringArray[day] = curFormater.format(date.getTime());
-            date.roll(Calendar.DAY_OF_YEAR, true);
-        }
-    }
 
 
     public void showCustomProgressDialog(){
@@ -252,9 +280,9 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
         switch (v.getId()) {
             case R.id.continueImageView:
 
-                String pickUpDate = pickUpDateTexView.getText().toString();
+                pickUpDate = pickUpDateTexView.getText().toString();
                 String pickUpTime = pickUpTimeTexView.getText().toString();
-                String dropOffDate = dropOffDateTexView.getText().toString();
+                dropOffDate = dropOffDateTexView.getText().toString();
                 String dropOffTime = dropOffTimeTexView.getText().toString();
 
                 ZPrefs.saveString(getActivity(), ZPrefs.KEY_RATE, selectedRate);
@@ -471,13 +499,14 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
         doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                showDateAndTime();
                 moreOptionsDialog.dismiss();
             }
         });
 
-        SimpleDateFormat curFormater = new SimpleDateFormat("EEEE,dd.MMMM");
-        GregorianCalendar date = new GregorianCalendar();
-        String[] dateStringArray = new String[14];
+        SimpleDateFormat curFormater = new SimpleDateFormat("dd.MMMM");
+        date = new GregorianCalendar();
+        String[] dateStringArray = new String[17];
 
         for (int day = 0; day < 17; day++) {
             dateStringArray[day] = curFormater.format(date.getTime());
@@ -506,6 +535,10 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
 
 
                 pickUpDateTexView.setText(selectedFromList);
+
+                pickUpDate = pickUpDateTexView.getText().toString();
+                dropOffDate = dropOffDateTexView.getText().toString();
+                ZLog.info("inside OnClick : " + pickUpDate);
                 TimeListAdapter pickUpDefaultAdapter = new TimeListAdapter(getActivity(), pickUpTimeListP2);
                 calendarTimeListView.setAdapter(pickUpDefaultAdapter);
 //                calendarTimeListView.setSelection(0);
@@ -568,12 +601,13 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
         doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                showDateAndTime();
                 moreOptionsDialog.dismiss();
             }
         });
 
         SimpleDateFormat curFormater = new SimpleDateFormat("dd.MMMM ");
-        GregorianCalendar date = new GregorianCalendar();
+        date = new GregorianCalendar();
         date.add(Calendar.DATE,5);
 
         String[] dateStringArray = new String[14];
@@ -600,6 +634,9 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
                 calendarDateListView.setItemChecked(position, true);
                 adapter.notifyDataSetChanged();
                 dropOffDateTexView.setText(selectedFromList);
+                pickUpDate = pickUpDateTexView.getText().toString();
+                dropOffDate = dropOffDateTexView.getText().toString();
+                ZLog.info("inside OnClick : "+dropOffDate);
                 switch (position){
                     case 0:
                         TimeListAdapter dropOffAdapterZero = new TimeListAdapter(getActivity(), dropOffTimeListP0);

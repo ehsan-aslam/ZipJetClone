@@ -1,5 +1,6 @@
 package putitout.zipjetclone.ui.util;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageInfo;
@@ -9,6 +10,8 @@ import android.text.Html;
 import android.text.Spanned;
 import android.util.Base64;
 import android.util.Log;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -189,6 +192,21 @@ public class ZUtil {
 
 
 
+    /**
+     * BroadCast
+     */
+    public static final String BROADCAST_ACTION_LOGOUT = "BROADCAST_ACTION_LOGOUT";
+    public static final String BROADCAST_ACTION_KILL_PREVIOUS_ACTIVITIES = "BROADCAST_ACTION_KILL_PREVIOUS_ACTIVITIES";
+    public static final String BROADCAST_ACTION_IMAGE_UPLOADING = "BROADCAST_ACTION_IMAGE_UPLOADING";
+    public static final String BROADCAST_ACTION_IMAGE_UPLOADING_INDEX = "BROADCAST_ACTION_IMAGE_UPLOADING_INDEX";
+    public static final String BROADCAST_ACTION_IMAGE_UPLOADING_TOTAL_SIZE = "BROADCAST_ACTION_IMAGE_UPLOADING_TOTAL_SIZE";
+    public static final String BROADCAST_ACTION_UPLOADING_COMPLETE = "BROADCAST_ACTION_UPLOADING_COMPLETE";
+    public static final String BROADCAST_ACTION_UPLOADING_PROGRESS = "BROADCAST_ACTION_UPLOADING_PROGRESS";
+    public static final String BROADCAST_ACTION_UPDATE_ON_UPLOADING_COMPLETE = "BROADCAST_ACTION_UPDATE_ON_UPLOADING_COMPLETE";
+    public static final String BROADCAST_ACTION_TRIMMING_COMPLETE = "BROADCAST_ACTION_TRIMMING_COMPLETE";
+
+
+
     public static boolean isJsonResponse(String response) {
         try {
             JSONObject parseJsonResponse = new JSONObject(response);
@@ -243,6 +261,13 @@ public class ZUtil {
                     }
                 }).show();
     }
+
+    public static void doSoftInputHide(Activity activity) {
+        View view = activity.findViewById(android.R.id.content);
+        InputMethodManager inputManager = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputManager.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+    }
+
 
     public static void showNetworkErrorAlertDialog(Context context) {
         ZDialog.showAlert(context,

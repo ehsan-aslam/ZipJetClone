@@ -1,8 +1,10 @@
 package putitout.zipjetclone.ui.activity;
 
 import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -58,6 +60,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         passwordEditText = (EditText) findViewById(R.id.passwordEditText);
         confirmLoginButton.setOnClickListener(this);
         backImageView.setOnClickListener(this);
+
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(ZUtil.BROADCAST_ACTION_KILL_PREVIOUS_ACTIVITIES);
+        registerReceiver(broadcastReceiver,intentFilter);
 
     }
 
@@ -130,6 +136,17 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
             }
         }
     }
+
+    private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if(intent.getAction().equals(ZUtil.BROADCAST_ACTION_KILL_PREVIOUS_ACTIVITIES)){
+                LoginActivity.this.finish();
+
+            }
+
+        }
+    };
 
     private void parseUserData(Parser parser) {
         if (parser.getStatus().equals(ZUtil.KEY_SERVER_RESPONSE_FAILURE)) {

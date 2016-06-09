@@ -2,7 +2,10 @@ package putitout.zipjetclone.ui.activity;
 
 import android.annotation.TargetApi;
 import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -27,6 +30,7 @@ import putitout.zipjetclone.ui.fragment.menu.PrivacyFragment;
 import putitout.zipjetclone.ui.fragment.menu.TCFragment;
 import putitout.zipjetclone.ui.interfaces.OnDateTimePickerListener;
 import putitout.zipjetclone.ui.util.ZLog;
+import putitout.zipjetclone.ui.util.ZUtil;
 import putitout.zipjetclone.ui.widgets.TypefaceTextView;
 
 /**
@@ -145,6 +149,9 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener,O
 //        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
 //        window.setStatusBarColor(this.getResources().getColor(R.color.greenBarColor));
 
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(ZUtil.BROADCAST_ACTION_KILL_PREVIOUS_ACTIVITIES);
+        registerReceiver(broadcastReceiver,intentFilter);
 
     }
 
@@ -192,24 +199,25 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener,O
                 replaceFragment(R.id.fragmentContainerLayout,new PricingFragment(),PricingFragment.TAG,true);
                 break;
             case R.id.menuOrderTextView:
-//                clearPreviousBackStackTillHomeActivity();
+                clearPreviousBackStackTillHomeActivity();
                 toggleMenu();
                 replaceFragment(R.id.fragmentContainerLayout,new OrderFragment(),OrderFragment.TAG,true);
                 break;
             case R.id.menuPricingTextView:
-//                clearPreviousBackStackTillHomeActivity();
+                clearPreviousBackStackTillHomeActivity();
                 Toast.makeText(this,"Pricing",Toast.LENGTH_LONG).show();
                 PricingFragment pricingFragment = new PricingFragment();
                 toggleMenu();
                 replaceFragment(R.id.fragmentContainerLayout,new PricingFragment(),PricingFragment.TAG,true);
                 break;
             case R.id.menuHelpTextView:
-//                clearPreviousBackStackTillHomeActivity();
+                clearPreviousBackStackTillHomeActivity();
                 Toast.makeText(this,"Help",Toast.LENGTH_LONG).show();
                 toggleMenu();
                 replaceFragment(R.id.fragmentContainerLayout,new HelpFragment(),HelpFragment.TAG,true);
                 break;
             case R.id.menuHowItWorksTextView:
+                clearPreviousBackStackTillHomeActivity();
                 toggleMenu();
                 startActivity(new Intent(this,HowItWorksActivity.class));
                 Toast.makeText(this,"How it works",Toast.LENGTH_LONG).show();
@@ -220,7 +228,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener,O
                 replaceFragment(R.id.fragmentContainerLayout,new PrivacyFragment(),PrivacyFragment.TAG,true);
                 break;
             case R.id.menuTCTextView:
-//                clearPreviousBackStackTillHomeActivity();
+                clearPreviousBackStackTillHomeActivity();
                 Toast.makeText(this,"Terms & Conditions",Toast.LENGTH_LONG).show();
                 toggleMenu();
                 replaceFragment(R.id.fragmentContainerLayout,new TCFragment(),TCFragment.TAG,true);
@@ -231,6 +239,16 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener,O
         }
 
     }
+
+    private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if(intent.getAction().equals(ZUtil.BROADCAST_ACTION_KILL_PREVIOUS_ACTIVITIES)){
+
+            }
+
+        }
+    };
 
     private void toggleMenu() {
         if (drawerLayout.isDrawerOpen(drawerMenuLinearLayout)) {
@@ -247,7 +265,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener,O
 
     private void clearPreviousBackStackTillHomeActivity() {
         getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-//        ZUtil.doSoftInputHide(this);
+        ZUtil.doSoftInputHide(this);
     }
 
     public void registerBackStackListener() {

@@ -319,6 +319,7 @@
                     android:text="02.June"
                     android:textColor="@color/darkGreen"
                     android:textSize="@dimen/_66px"
+                    android:maxLength="7"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="5dp"
                     android:visibility="visible"/>
@@ -363,11 +364,12 @@
                     android:id="@+id/dropOffDateTexView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Sunday"
+                    android:text="02.June"
                     android:textColor="@color/darkGreen"
                     android:textSize="@dimen/_75px"
                     android:gravity="center"
                     android:layout_marginLeft="15dp"
+                    android:maxLength="7"
                     android:layout_gravity="center|start"
                     android:layout_marginTop="5dp"
                     android:visibility="visible"/>
