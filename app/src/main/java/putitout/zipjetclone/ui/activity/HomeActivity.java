@@ -211,7 +211,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener,O
                 break;
             case R.id.menuHowItWorksTextView:
                 toggleMenu();
-                startActivity(new Intent(this,PagerActivity.class));
+                startActivity(new Intent(this,HowItWorksActivity.class));
                 Toast.makeText(this,"How it works",Toast.LENGTH_LONG).show();
                 break;
             case R.id.menuPrivacyTextView:
@@ -247,7 +247,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener,O
 
     private void clearPreviousBackStackTillHomeActivity() {
         getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-//        KUtil.doSoftInputHide(this);
+//        ZUtil.doSoftInputHide(this);
     }
 
     public void registerBackStackListener() {

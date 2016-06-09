@@ -237,13 +237,25 @@
         android:layout_weight="12.8"
         android:visibility="visible"/>
 
-    <ImageView
-        android:id="@+id/confirmImageView"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="12.8"
-        android:src="@drawable/confirm_icon"
-        android:visibility="visible"/>
+        android:layout_weight="12.8">
+
+        <Button
+            android:id="@+id/confirmLoginButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/save_contact_details"
+            android:text="@string/confirm"
+            android:textSize="@dimen/_76px"
+            android:textStyle="bold"
+            android:textColor="@color/white"/>
+
+    </RelativeLayout>
+
+
 
 
 </LinearLayout>

@@ -17,6 +17,8 @@
 
     <!--Validation fields-->
     <string name="emailAddressErrorMessageEmpty">Please enter your first Name</string>
+
+    <string name="emailAddressErrorMessageEmpt"> Please enter email address</string>
     <string name="emailAddressInvalidMessage">Please enter a valid Email Address</string>
     <string name="phoneInvalidMessage">Please enter a phone number</string>
     <string name="passwordErrorMessageEmpty">Please enter your Last Name</string>
@@ -74,6 +76,7 @@
     <string name="logout">Log Out</string>
     <string name="ViewDetails">"View Details"</string>
     <string name="TrimVideo">"TrimVideo"</string>
+    <string name="confirm">"CONFIRM"</string>
 
     <string name="saveContactDetails">"SAVE CONTACT DETAILS"</string>
     <string name="saveData">Your data has been saved </string>

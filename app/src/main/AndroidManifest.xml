@@ -52,7 +52,7 @@
         </activity>
 
         <activity
-            android:name=".ui.activity.MainActivity"
+            android:name=".ui.activity.HowItWorksActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Light.NoTitleBar"/>
@@ -75,7 +75,6 @@
             android:name=".ui.activity.HomeActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait"
-
             android:theme="@android:style/Theme.Light.NoTitleBar"/>
 
         <activity

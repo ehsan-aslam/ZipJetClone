@@ -479,7 +479,7 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
         GregorianCalendar date = new GregorianCalendar();
         String[] dateStringArray = new String[14];
 
-        for (int day = 0; day < 14; day++) {
+        for (int day = 0; day < 17; day++) {
             dateStringArray[day] = curFormater.format(date.getTime());
             date.roll(Calendar.DAY_OF_YEAR, true);
         }
@@ -574,7 +574,7 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
 
         SimpleDateFormat curFormater = new SimpleDateFormat("dd.MMMM ");
         GregorianCalendar date = new GregorianCalendar();
-        date.add(Calendar.DATE,3);
+        date.add(Calendar.DATE,5);
 
         String[] dateStringArray = new String[14];
         for (int day = 0; day < 14; day++) {

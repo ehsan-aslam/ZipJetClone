@@ -16,6 +16,5 @@ public class ZLog {
     public static void info(String message) {
 
             Log.v(ZUtil.APP_ID, "**** Zipjet ****: "+message);
-
     }
 }

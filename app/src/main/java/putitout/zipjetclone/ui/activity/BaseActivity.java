@@ -44,7 +44,7 @@ public abstract class BaseActivity extends FragmentActivity {
 //        Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
 //            @Override
 //            public void uncaughtException(Thread paramThread, Throwable paramThrowable) {
-//                KUtil.writeToFile(paramThrowable.getStackTrace().toString());
+//                ZUtil.writeToFile(paramThrowable.getStackTrace().toString());
 //                KLog.info("KIDLR-EXC: "+paramThrowable.getStackTrace().toString());
 //                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
 //            }

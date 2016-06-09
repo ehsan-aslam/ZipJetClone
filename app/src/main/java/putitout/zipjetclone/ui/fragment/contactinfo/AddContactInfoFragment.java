@@ -96,6 +96,7 @@ public class AddContactInfoFragment extends BaseFragment implements View.OnClick
                     lastNameImageView.setImageResource(R.drawable.person_face_off);
                     emailImageView.setImageResource(R.drawable.email_on_icon);
                     emailEditText.requestFocus();
+
                 }
                 return false;
             }
@@ -182,10 +183,10 @@ public class AddContactInfoFragment extends BaseFragment implements View.OnClick
     }
 
     private void login(String firstName, String lastName ,String email, String phoneNumber) {
-//        if (NetworkUtil.checkIfNetworkAvailable(this)) {
+//        if (NetworZUtil.checkIfNetworkAvailable(this)) {
 //            NetworkMananger.loginUserApi(this, email_off_icon, password, this, LOGIN_USER);
 //        } else {
-//            KUtil.showNetworkErrorAlertDialog(this);
+//            ZUtil.showNetworkErrorAlertDialog(this);
 //        }
         ConfirmationFragment confirmationFragment = new ConfirmationFragment();
         Bundle bundle = new Bundle();

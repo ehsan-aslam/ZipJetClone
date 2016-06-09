@@ -20,7 +20,7 @@ public class PagerActivity extends Activity implements View.OnClickListener {
 
     private ViewPager imageViewPager;
     private ImagePagerAdapter imagePagerAdapter;
-    private ImageView startImageView;
+    private ImageView startNowImageView;
     private ImageView loginImageView;
     private int[] sliderImages;
 
@@ -41,10 +41,10 @@ public class PagerActivity extends Activity implements View.OnClickListener {
 
         imageViewPager = (ViewPager) findViewById(R.id.imageViewPager);
         imagePagerAdapter = new ImagePagerAdapter(this, sliderImages);
-        startImageView = (ImageView) findViewById(R.id.startImageView);
+        startNowImageView = (ImageView) findViewById(R.id.startNowImageView);
         loginImageView = (ImageView) findViewById(R.id.loginImageView);
         loginImageView.setOnClickListener(this);
-        startImageView.setOnClickListener(this);
+        startNowImageView.setOnClickListener(this);
         imageViewPager.setAdapter(imagePagerAdapter);
         imagePagerAdapter.notifyDataSetChanged();
         imageViewPager.setCurrentItem(0);
@@ -53,7 +53,7 @@ public class PagerActivity extends Activity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         switch(v.getId()){
-            case R.id.startImageView:
+            case R.id.startNowImageView:
                 startActivity(new Intent(this,HomeActivity.class));
                 break;
             case R.id.loginImageView:
