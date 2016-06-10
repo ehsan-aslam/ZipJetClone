@@ -240,47 +240,35 @@
         android:layout_height="1dp"
         android:background="@color/greenColor"/>
 
-    <!--<LinearLayout-->
-    <!--android:id="@+id/menuSettingsLinearLayout"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:orientation="horizontal"-->
-    <!--android:paddingBottom="5dp"-->
-    <!--android:paddingTop="5dp">-->
+    <LinearLayout
+        android:id="@+id/menuLogoutLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp">
 
-    <!--<TextView-->
-    <!--android:layout_width="0dp"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_weight="8.3" />-->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5.3"/>
 
-    <!--<ImageView-->
-    <!--android:id="@+id/menuSettingsImageView"-->
-    <!--android:layout_width="0dp"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_weight="10.3"-->
-    <!--android:src="@drawable/menu_icon_setting" />-->
+        <TextView
+            android:id="@+id/menuLogoutTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="45.5"
+            android:text="@string/logOut"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_76px"/>
 
-    <!--<TextView-->
-    <!--android:layout_width="0dp"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_weight="8.7" />-->
+    </LinearLayout>
 
-    <!--<TextView-->
-    <!--android:id="@+id/menuSettingsTextView"-->
-    <!--android:layout_width="0dp"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_gravity="center_vertical"-->
-    <!--android:layout_weight="45.5"-->
-    <!--android:text="@string/settings"-->
-    <!--android:textColor="@color/dark_gray"-->
-    <!--android:textSize="30sp"/>-->
-
-    <!--</LinearLayout>-->
-
-    <!--<View-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="1dp"-->
-    <!--android:background="@color/separator_color" />-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        />
 
 
     <!--<LinearLayout-->

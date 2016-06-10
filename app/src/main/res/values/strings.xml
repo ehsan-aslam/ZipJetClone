@@ -44,6 +44,8 @@
     <string name="settings">Settings</string>
     <string name="logOut">Log Out</string>
 
+    <string name="logoutAlert">Are you sure you want to log out?</string>
+
     <!-- Menu More Options -->
     <string name="menuEdit">Edit</string>
     <string name="lahore">Lahore</string>

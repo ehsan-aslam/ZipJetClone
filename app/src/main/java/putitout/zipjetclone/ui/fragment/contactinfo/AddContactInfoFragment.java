@@ -131,6 +131,7 @@ public class AddContactInfoFragment extends BaseFragment implements View.OnClick
         LastNameEditText.setOnTouchListener(this);
         firstNameEditText.setOnTouchListener(this);
         emailEditText.setOnTouchListener(this);
+        phoneEditText.setOnTouchListener(this);
     }
 
     @Override

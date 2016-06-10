@@ -99,6 +99,7 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
     @Override
     public View onCreateView(LayoutInflater inflater,ViewGroup container,Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_order, container, false);
+        getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         widgets(view);
         return view;
@@ -135,9 +136,7 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
         pickUpTimeTexView= (TextView) v.findViewById(R.id.pickUpTimeTexView);
         dropOffTimeTexView = (TextView) v.findViewById(R.id.dropOffTimeTexView);
         dropOffDateTexView = (TextView) v.findViewById(R.id.dropOffDateTexView);
-
-
-
+        ZUtil.doSoftInputHide(getActivity());
 
         pickUpTimeListP0 = new String[]{"00:00 - 02:00","12:00 - 14:00","14:00 - 16:00","16:00 - 18:00"};
         pickUpTimeListP1 = new String[]{"12:00 - 14:00","14:00 - 16:00","16:00 - 18:00","22:00 - 00:00"};
@@ -148,79 +147,40 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
         dropOffTimeListP6 = new String[]{"00:00 - 02:00","12:00 - 14:00","14:00 - 16:00","16:00 - 18:00"};
         dropOffTimeListP7 = new String[]{"12:00 - 14:00","14:00 - 16:00","16:00 - 18:00","22:00 - 00:00"};
 
-//        showDateAndTime();
-
-        Date d = new Date();
-        CharSequence s  = DateFormat.format("dd.MMMM", d.getTime());
-
+        Date mDate = new Date();
+        CharSequence s  = DateFormat.format("dd.MMMM", mDate.getTime());
         pickUpDateTexView.setText(s);
 
     }
 
     public void showDateAndTime(){
 
-//        if(pickUpDate != null && dropOffDate !=null) {
-
-//            if (dropOffDate.contains(pickUpDate)) {
-//
-//                ZUtil.showAlert(getActivity(), "equal");
-//            }
-//        else{
-//                ZUtil.showAlert(getActivity(), "no equal");
-//            }
-
-            if (dropOffDate.trim().equals(pickUpDate)&&(pickUpDate.equals(dropOffDate.trim()))) {
-
-//                ZUtil.showAlert(getActivity(), "equal");
-
-                String dt = "2008-01-01";  // Start date
-                SimpleDateFormat sdf = new SimpleDateFormat("dd.MMMM");
-                Calendar c = Calendar.getInstance();
-                try {
-                    c.setTime(sdf.parse(dropOffDate));
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                c.add(Calendar.DATE, 1);  // number of days to add
-                dropOffDate = sdf.format(c.getTime());
-
-                dropOffDateTexView.setText(dropOffDate);
+        if (dropOffDate.trim().equals(pickUpDate)&&(pickUpDate.equals(dropOffDate.trim()))) {
+            String date = "2008-01-01";  // Start date
+            SimpleDateFormat sdf = new SimpleDateFormat("dd.MMMM");
+            Calendar c = Calendar.getInstance();
+            try {
+                c.setTime(sdf.parse(dropOffDate));
+            } catch (ParseException e) {
+                e.printStackTrace();
             }
-            else{
-                ZUtil.showAlert(getActivity(), "no equal");
-            }
-//        }
-////        else {
-//            if (dropOffDateTexView.equals(pickUpDateTexView)) {
-//
-//                ZUtil.showAlert(getActivity(), "ok");
-//            }
-//            else{
-//                ZUtil.showAlert(getActivity(), "no equal");
-//            }
-////        }
+            c.add(Calendar.DATE, 1);  // number of days to add
+            dropOffDate = sdf.format(c.getTime());
+            dropOffDateTexView.setText(dropOffDate);
+        }
     }
 
-    @Override
-    public void onPause() {
-        super.onPause();
 
-        showDateAndTime();
-    }
 
     @Override
     public void onResume() {
         super.onResume();
-//        placeTextView.setText(R.string.lahore + "" +lat );
-//        showDateAndTime();
     }
 
     @Override
     public boolean isPullToRefreshEnable() {
         return false;
     }
-
-
 
     public void showCustomProgressDialog(){
 
@@ -248,12 +208,10 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == getActivity().RESULT_OK) {
-
             if (data != null) {
                 // get the returned data
                 Bundle extras = data.getExtras();
                 // get the cropped bitmap
-
             }
         }
     }
@@ -670,5 +628,4 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
         moreOptionsDialog.setContentView(v);
         moreOptionsDialog.show();
     }
-
 }

@@ -1,13 +1,16 @@
 package putitout.zipjetclone.ui.activity;
 
-        import android.annotation.TargetApi;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.WindowManager;
 
 import putitout.zipjetclone.R;
+import putitout.zipjetclone.ui.util.ZPrefs;
+import putitout.zipjetclone.ui.util.ZUtil;
 
 /**
  * Created by SA on 5/19/2016.
@@ -21,9 +24,11 @@ public class SplashActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         initWidget();
     }
     public void initWidget() {
+        ZUtil.doSoftInputHide(this);
         checkFlowAndProceed();
     }
 
@@ -32,7 +37,13 @@ public class SplashActivity extends Activity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(SplashActivity.this, PagerActivity.class));
+
+                if (ZPrefs.getString(SplashActivity.this, ZPrefs.KEY_TOKEN, "").equals("")) {
+                    startActivity(new Intent(SplashActivity.this, PagerActivity.class));
+
+                } else {
+                    startActivity(new Intent(SplashActivity.this, HomeActivity.class));
+                }
                 finish();
             }
         }, SPLASH_MILLIS);

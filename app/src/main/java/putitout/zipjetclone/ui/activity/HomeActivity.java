@@ -1,11 +1,12 @@
 package putitout.zipjetclone.ui.activity;
 
 import android.annotation.TargetApi;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -30,6 +31,7 @@ import putitout.zipjetclone.ui.fragment.menu.PrivacyFragment;
 import putitout.zipjetclone.ui.fragment.menu.TCFragment;
 import putitout.zipjetclone.ui.interfaces.OnDateTimePickerListener;
 import putitout.zipjetclone.ui.util.ZLog;
+import putitout.zipjetclone.ui.util.ZPrefs;
 import putitout.zipjetclone.ui.util.ZUtil;
 import putitout.zipjetclone.ui.widgets.TypefaceTextView;
 
@@ -52,6 +54,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener,O
     private TextView menuHowItWorksTextView;
     private TextView menuPrivacyTextView;
     private TextView menuTCTextView;
+    private TextView menuLogoutTextView;
 
     private LinearLayout rateLinearLayout;
     private DrawerLayout drawerLayout;
@@ -62,6 +65,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener,O
     private double longitude ;
 
     long timeInMillis;
+    private AlertDialog logoutDialog;
 
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
@@ -117,6 +121,8 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener,O
         menuPrivacyTextView.setOnClickListener(this);
         menuTCTextView = (TextView) findViewById(R.id.menuTCTextView);
         menuTCTextView.setOnClickListener(this);
+        menuLogoutTextView = (TextView) findViewById(R.id.menuLogoutTextView);
+        menuLogoutTextView.setOnClickListener(this);
 
         Bundle bundle = getIntent().getExtras();
 //        longitude = bundle.getDouble("long");
@@ -149,9 +155,9 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener,O
 //        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
 //        window.setStatusBarColor(this.getResources().getColor(R.color.greenBarColor));
 
-        IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction(ZUtil.BROADCAST_ACTION_KILL_PREVIOUS_ACTIVITIES);
-        registerReceiver(broadcastReceiver,intentFilter);
+//        IntentFilter intentFilter = new IntentFilter();
+//        intentFilter.addAction(ZUtil.BROADCAST_ACTION_KILL_PREVIOUS_ACTIVITIES);
+//        registerReceiver(broadcastReceiver,intentFilter);
 
     }
 
@@ -221,6 +227,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener,O
                 toggleMenu();
                 startActivity(new Intent(this,HowItWorksActivity.class));
                 Toast.makeText(this,"How it works",Toast.LENGTH_LONG).show();
+                HomeActivity.this.finish();
                 break;
             case R.id.menuPrivacyTextView:
                 Toast.makeText(this,"Privacy",Toast.LENGTH_LONG).show();
@@ -233,6 +240,10 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener,O
                 toggleMenu();
                 replaceFragment(R.id.fragmentContainerLayout,new TCFragment(),TCFragment.TAG,true);
                 break;
+            case R.id.menuLogoutTextView:
+                showLogoutAlert();
+
+                break;
             case R.id.backImageView:
                 getSupportFragmentManager().popBackStack();
                 break;
@@ -240,6 +251,37 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener,O
 
     }
 
+    public void showLogoutAlert() {
+        if(logoutDialog!=null && logoutDialog.isShowing()) return;
+        logoutDialog = new AlertDialog.Builder(getActivity()).setMessage(getResources().getString(R.string.logoutAlert))
+                .setCancelable(true)
+                .setPositiveButton(getResources().getString(R.string.logOut), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        logOut();
+                        dialog.dismiss();
+                    }
+                }).setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                }).create();
+        logoutDialog.show();
+    }
+
+
+    public void logOut() {
+        try {
+            ZPrefs.clearSharedPreferences(this);
+//            AlbumListingFragment.clearCache();
+//            KCacheManager.getInstance().clearCache();
+//            KCacheManager.getInstance().getImageLoader().clearCache();
+        } catch (Exception e) {}
+        Intent intent = new Intent(this, PagerActivity.class);
+        startActivity(intent);
+        finish();
+    }
     private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -14,6 +15,7 @@ import putitout.zipjetclone.ui.activity.HomeActivity;
 import putitout.zipjetclone.ui.fragment.BaseFragment;
 import putitout.zipjetclone.ui.util.ZLog;
 import putitout.zipjetclone.ui.util.ZPrefs;
+import putitout.zipjetclone.ui.util.ZUtil;
 
 /**
  * Created by SA on 6/1/2016.
@@ -49,6 +51,7 @@ public class ConfirmationFragment extends BaseFragment implements View.OnClickLi
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_confirmation,container,false);
+        getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         initWidgets(view);
         return view;
     }
@@ -68,6 +71,7 @@ public class ConfirmationFragment extends BaseFragment implements View.OnClickLi
 
         saveOrderButton = (Button) v.findViewById(R.id.saveOrderButton);
         saveOrderButton.setOnClickListener(this);
+        ZUtil.doSoftInputHide(getActivity());
 
 
         Bundle bundle = this.getArguments();
