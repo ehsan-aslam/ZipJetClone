@@ -13,7 +13,6 @@ import android.widget.Toast;
 import putitout.zipjetclone.R;
 import putitout.zipjetclone.ui.activity.HomeActivity;
 import putitout.zipjetclone.ui.fragment.BaseFragment;
-import putitout.zipjetclone.ui.util.ZLog;
 import putitout.zipjetclone.ui.util.ZPrefs;
 import putitout.zipjetclone.ui.util.ZUtil;
 
@@ -39,8 +38,8 @@ public class ConfirmationFragment extends BaseFragment implements View.OnClickLi
 
     private Button saveOrderButton;
 
-    private double lat;
-    private double lon;
+    private double latitude;
+    private double longitude;
 
     String selectedRate;
 
@@ -72,41 +71,9 @@ public class ConfirmationFragment extends BaseFragment implements View.OnClickLi
         saveOrderButton = (Button) v.findViewById(R.id.saveOrderButton);
         saveOrderButton.setOnClickListener(this);
         ZUtil.doSoftInputHide(getActivity());
-
-
-        Bundle bundle = this.getArguments();
-        String firstName = bundle.getString("firstName");
-        String lastName = bundle.getString("lastName");
-        String email = bundle.getString("email_off_icon");
-        String phoneNumber = bundle.getString("phoneNumber");
-
-        firstNameTextView.setText(firstName);
-        LastNameTextView.setText(lastName);
-        emailTextView.setText(email);
-        phoneNumberTextView.setText(phoneNumber);
-
-
-        String selectedRate = ZPrefs.getString(getActivity(),ZPrefs.KEY_RATE,"");
-        String pickUpTime = ZPrefs.getString(getActivity(),ZPrefs.KEY_PICK_UP_TIME,"");
-        String pickUpDate = ZPrefs.getString(getActivity(),ZPrefs.KEY_PICK_UP_DATE,"");
-        String dropOffTime = ZPrefs.getString(getActivity(),ZPrefs.KEY_DROP_OFF_TIME,"");
-        String dropOffDate = ZPrefs.getString(getActivity(),ZPrefs.KEY_DROP_OFF_DATE,"");
-        String address = ZPrefs.getString(getActivity(),ZPrefs.KEY_ADDRESS,"");
-        rateTextView.setText(selectedRate);
-        pickUpDateTexView.setText(pickUpDate+" "+"-"+pickUpTime);
-        dropOffDateTextView.setText(dropOffDate+" "+"-"+dropOffTime);
-
-        ZLog.info(""+TAG + "address:" + address);
-        ZLog.info(""+TAG + "pickUpTime: " + pickUpTime);
-        ZLog.info(""+TAG + "dropOffTime:" + dropOffTime);
-
         Toast.makeText(getActivity(),"Following are your details",Toast.LENGTH_LONG).show();
+        showSavedData();
 
-        lat = Double.longBitsToDouble(ZPrefs.getLong(getActivity(),ZPrefs.KEY_LATITUDE,0));
-        lon = Double.longBitsToDouble(ZPrefs.getLong(getActivity(),ZPrefs.KEY_LONGITUDE,0));
-
-        locationTextView.setText(address + "," + "Lahore");
-//        +"Lahore " + "--" + "  "+"Lat: " + lat + " , " + " Long: " + lon
     }
 
     @Override
@@ -125,6 +92,40 @@ public class ConfirmationFragment extends BaseFragment implements View.OnClickLi
 
     @Override
     public void onVisible() {}
+
+
+    public void showSavedData(){
+
+        Bundle bundle = this.getArguments();
+        String firstName = bundle.getString(ZUtil.KEY_FIRST_NAME);
+        String lastName = bundle.getString(ZUtil.KEY_LAST_NAME);
+        String email = bundle.getString(ZUtil.KEY_EMAIL);
+        String phoneNumber = bundle.getString(ZUtil.KEY_MOBILE);
+
+        firstNameTextView.setText(firstName);
+        LastNameTextView.setText(lastName);
+        emailTextView.setText(email);
+        phoneNumberTextView.setText(phoneNumber);
+
+
+        String selectedRate = ZPrefs.getString(getActivity(),ZPrefs.KEY_RATE,"");
+        String pickUpTime = ZPrefs.getString(getActivity(),ZPrefs.KEY_PICK_UP_TIME,"");
+        String pickUpDate = ZPrefs.getString(getActivity(),ZPrefs.KEY_PICK_UP_DATE,"");
+        String dropOffTime = ZPrefs.getString(getActivity(),ZPrefs.KEY_DROP_OFF_TIME,"");
+        String dropOffDate = ZPrefs.getString(getActivity(),ZPrefs.KEY_DROP_OFF_DATE,"");
+        String address = ZPrefs.getString(getActivity(),ZPrefs.KEY_ADDRESS,"");
+
+        rateTextView.setText(selectedRate);
+
+        pickUpDateTexView.setText(pickUpDate+" "+"-"+pickUpTime);
+        dropOffDateTextView.setText(dropOffDate+" "+"-"+dropOffTime);
+
+        latitude = Double.longBitsToDouble(ZPrefs.getLong(getActivity(),ZPrefs.KEY_LATITUDE,0));
+        longitude = Double.longBitsToDouble(ZPrefs.getLong(getActivity(),ZPrefs.KEY_LONGITUDE,0));
+
+        locationTextView.setText(address + "," + "Lahore");
+//        +"Lahore " + "--" + "  "+"Lat: " + latitude + " , " + " Long: " + longitude
+    }
 
     @Override
     public void onClick(View v) {

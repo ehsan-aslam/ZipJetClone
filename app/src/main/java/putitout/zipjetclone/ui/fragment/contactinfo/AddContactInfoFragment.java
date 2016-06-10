@@ -191,10 +191,10 @@ public class AddContactInfoFragment extends BaseFragment implements View.OnClick
 //        }
         ConfirmationFragment confirmationFragment = new ConfirmationFragment();
         Bundle bundle = new Bundle();
-        bundle.putString("firstName", firstName);
-        bundle.putString("lastName", lastName);
-        bundle.putString("email_off_icon", email);
-        bundle.putString("phoneNumber", phoneNumber);
+        bundle.putString(ZUtil.KEY_FIRST_NAME,firstName);
+        bundle.putString(ZUtil.KEY_LAST_NAME, lastName);
+        bundle.putString(ZUtil.KEY_EMAIL, email);
+        bundle.putString(ZUtil.KEY_MOBILE, phoneNumber);
         confirmationFragment.setArguments(bundle);
         replaceFragment(R.id.fragmentContainerLayout,confirmationFragment,ConfirmationFragment.TAG,true);
         saveContactButton.setBackgroundResource(R.drawable.save_contact_details);

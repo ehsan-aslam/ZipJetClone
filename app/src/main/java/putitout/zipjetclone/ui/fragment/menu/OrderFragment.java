@@ -91,9 +91,6 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
     String pickUpDate ;
     String dropOffDate;
 
-    private Double lat;
-    private Double lon;
-
     GregorianCalendar date;
 
     @Override
@@ -409,8 +406,6 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener{
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), MapActivity.class);
                 startActivity(intent);
-                getActivity().finish();
-                homeActivity.finish();
                 placeTextView.setText(R.string.lahore );
                 moreOptionsDialog.dismiss();
             }

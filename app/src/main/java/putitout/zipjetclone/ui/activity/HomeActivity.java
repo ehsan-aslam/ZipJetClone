@@ -47,7 +47,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener,O
 
 
     private TypefaceTextView headerTextView;
-    private TextView placeTextView;
+
     private TextView menuOrderTextView;
     private TextView menuPricingTextView;
     private TextView menuHelpTextView;
@@ -124,30 +124,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener,O
         menuLogoutTextView = (TextView) findViewById(R.id.menuLogoutTextView);
         menuLogoutTextView.setOnClickListener(this);
 
-        Bundle bundle = getIntent().getExtras();
-//        longitude = bundle.getDouble("long");
-
-        if(bundle!=null) {
-            latitude = bundle.getDouble("lat");
-            longitude = bundle.getDouble("long");
-            ZLog.info(TAG + "latitude :" + latitude);
-            ZLog.info(TAG + "longitude :" + longitude);
-        } else {
-            ZLog.info(TAG + ""+ bundle);
-        }
-
-
-
-        Bundle bundl = new Bundle();
-
-        bundl.putDouble("lat",latitude);
-        bundl.putDouble("long",longitude);
-
-        ConfirmationFragment orderFragment = new ConfirmationFragment();
-        orderFragment.setArguments(bundl);
-        getSupportFragmentManager().beginTransaction().
-                replace(R.id.fragmentContainerLayout,new OrderFragment(),OrderFragment.TAG).
-                commit();
+        getLatLgCoordinates();
         registerBackStackListener();
 
 //        Window window = this.getWindow();
@@ -161,18 +138,9 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener,O
 
     }
 
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
-//        OrderFragment orderFragment = (OrderFragment) getSupportFragmentManager().findFragmentByTag(OrderFragment.TAG);
-//        if (orderFragment != null) {
-//            orderFragment.onActivityResult(requestCode, resultCode, data);
-//            return;
-//        }
-
-
     }
 
     @Override
@@ -191,6 +159,28 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener,O
     public void changeViewsVisibility(){
 //        headerTextView.setText(R.string.newOrder);
 //        pricingImageView.setVisibility(View.VISIBLE);
+    }
+
+    public void getLatLgCoordinates(){
+
+        Bundle bundle = getIntent().getExtras();
+
+        if(bundle!=null) {
+            latitude = bundle.getDouble(ZUtil.KEY_LATITUDE);
+            longitude = bundle.getDouble(ZUtil.KEY_LONGITUDE);
+        } else {}
+
+        Bundle mBundle = new Bundle();
+
+        mBundle.putDouble(ZUtil.KEY_LATITUDE,latitude);
+        mBundle.putDouble(ZUtil.KEY_LONGITUDE,longitude);
+
+        ConfirmationFragment orderFragment = new ConfirmationFragment();
+        orderFragment.setArguments(mBundle);
+
+        getSupportFragmentManager().beginTransaction().
+                replace(R.id.fragmentContainerLayout,new OrderFragment(),OrderFragment.TAG).
+                commit();
     }
 
     @Override
@@ -212,7 +202,6 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener,O
             case R.id.menuPricingTextView:
                 clearPreviousBackStackTillHomeActivity();
                 Toast.makeText(this,"Pricing",Toast.LENGTH_LONG).show();
-                PricingFragment pricingFragment = new PricingFragment();
                 toggleMenu();
                 replaceFragment(R.id.fragmentContainerLayout,new PricingFragment(),PricingFragment.TAG,true);
                 break;
@@ -242,7 +231,6 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener,O
                 break;
             case R.id.menuLogoutTextView:
                 showLogoutAlert();
-
                 break;
             case R.id.backImageView:
                 getSupportFragmentManager().popBackStack();
@@ -272,23 +260,20 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener,O
 
 
     public void logOut() {
+
         try {
             ZPrefs.clearSharedPreferences(this);
-//            AlbumListingFragment.clearCache();
-//            KCacheManager.getInstance().clearCache();
-//            KCacheManager.getInstance().getImageLoader().clearCache();
         } catch (Exception e) {}
         Intent intent = new Intent(this, PagerActivity.class);
         startActivity(intent);
         finish();
     }
+
     private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             if(intent.getAction().equals(ZUtil.BROADCAST_ACTION_KILL_PREVIOUS_ACTIVITIES)){
-
             }
-
         }
     };
 

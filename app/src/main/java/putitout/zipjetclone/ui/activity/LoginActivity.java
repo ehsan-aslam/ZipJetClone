@@ -87,7 +87,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
             emailEditText.setError(null);
         }
         if (ZUtil.isEmpty(passwordEditText.getText().toString())) {
-            passwordEditText.setError(ZUtil.getErrorHtmlFromString(getString(R.string.passwordErrorMessageEmpty)));
+            passwordEditText.setError(ZUtil.getErrorHtmlFromString(getString(R.string.passwordErrorMessageEmpt)));
             confirmLoginButton.setBackgroundResource(R.drawable.save_contact_details_off);
         } else {
             passwordEditText.setError(null);

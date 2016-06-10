@@ -24,6 +24,7 @@ import java.io.IOException;
 import putitout.zipjetclone.R;
 import putitout.zipjetclone.ui.util.ZLog;
 import putitout.zipjetclone.ui.util.ZPrefs;
+import putitout.zipjetclone.ui.util.ZUtil;
 
 /**
  * Created by SA on 5/19/2016.
@@ -220,8 +221,8 @@ public class MapActivity extends BaseActivity implements View.OnClickListener  {
                 ZLog.info("address"+address);
                 Intent intent = new Intent(this,HomeActivity.class);
                 Bundle b = new Bundle();
-                b.putDouble("lat",latitude);
-                b.putDouble("long",longitude);
+                b.putDouble(ZUtil.KEY_LATITUDE,latitude);
+                b.putDouble(ZUtil.KEY_LONGITUDE,longitude);
                 intent.putExtras(b);
                 startActivityForResult(intent,10);
 

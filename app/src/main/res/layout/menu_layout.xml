@@ -240,6 +240,10 @@
         android:layout_height="1dp"
         android:background="@color/greenColor"/>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+
     <LinearLayout
         android:id="@+id/menuLogoutLinearLayout"
         android:layout_width="match_parent"

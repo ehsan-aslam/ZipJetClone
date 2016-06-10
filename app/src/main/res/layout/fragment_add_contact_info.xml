@@ -63,6 +63,11 @@
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="3.8"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:background="@color/greyColor"
             android:layout_weight="3.8"/>
 
@@ -119,8 +124,14 @@
             android:inputType="textPersonName|textCapWords"
             android:maxLines="1"
             android:ellipsize="end"
+
             android:scrollbars="horizontal"
             android:gravity="center|start"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3.8"/>
 
         <View
             android:layout_width="0dp"
@@ -178,6 +189,11 @@
             android:ellipsize="end"
             android:scrollbars="horizontal"
             android:gravity="center|start"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3.8"/>
 
         <View
             android:layout_width="0dp"
@@ -251,6 +267,11 @@
             android:ellipsize="end"
             android:scrollbars="horizontal"
             android:gravity="center|start"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3.8"/>
 
         <View
             android:layout_width="0dp"

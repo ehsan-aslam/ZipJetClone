@@ -23,6 +23,8 @@
     <string name="phoneInvalidMessage">Please enter a phone number</string>
     <string name="passwordErrorMessageEmpty">Please enter your Last Name</string>
 
+    <string name="passwordErrorMessageEmpt">Please enter your Password</string>
+
     <!--Internet Alert Messages-->
     <string name="noInternet">No Internet is available</string>
     <string name="serverError">Server is not responding, try again later</string>

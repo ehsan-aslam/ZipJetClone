@@ -33,7 +33,14 @@ public class PagerActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_pager);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         initWidget();
+
         Toast.makeText(this,"Swipe Left And Right For Demo",Toast.LENGTH_LONG).show();
+
+//        Snackbar.make(findViewById(android.R.id.content), "Had a snack at Snackbar", Snackbar.LENGTH_LONG)
+//                .setAction("Undo", null)
+//                .setActionTextColor(Color.RED)
+//                .show();
+
     }
 
     public void initWidget() {

@@ -74,8 +74,18 @@ public class ZUtil {
     public static final String KEY_END_DATE= "end_date";
 
 
+    public static final String KEY_MOBILE = "mobileNumber";
 
 
+    public static final String KEY_LATITUDE = "lat";
+
+    public static final String KEY_LONGITUDE = "long";
+
+    public static final String KEY_RATE = "selectedRate";
+
+    public static final String KEY_LITE = "LITE PACKAGE";
+    public static final String KEY_PLUS = "PLUS PACKAGE";
+    public static final String KEY_EXPRESS = "EXPRESS PACKAGE";
 
 
 
