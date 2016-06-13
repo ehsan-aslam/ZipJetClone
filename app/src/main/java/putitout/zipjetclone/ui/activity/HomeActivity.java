@@ -127,6 +127,8 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener,O
         getLatLgCoordinates();
         registerBackStackListener();
 
+
+
 //        Window window = this.getWindow();
 //        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 //        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
